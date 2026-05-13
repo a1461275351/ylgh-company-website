@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>联系我们 | 杨凌国合跨境贸易有限公司</title>
+  <meta name="description" content="联系杨凌国合跨境贸易有限公司：商务合作、产品询盘、物流合作请通过表单或直接联系我们。地址：陕西省杨凌示范区·杨凌综合保税区。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ---- Contact page ---- */
+    .contact-section { background: var(--bg-cream); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    /* Contact info panel */
+    .contact-info-panel {
+      position: sticky;
+      top: 100px;
+    }
+
+    .contact-info-panel h2 {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+
+    .contact-info-panel .sub {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+
+    .contact-info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .ci-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px;
+      background: var(--bg-white);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      transition: all var(--transition);
+    }
+
+    .ci-item:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow);
+    }
+
+    .ci-item .ci-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(26,94,58,0.08);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .ci-item .ci-text .ci-label {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+
+    .ci-item .ci-text .ci-val {
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    .ci-item .ci-text .ci-val a {
+      color: var(--text-dark);
+    }
+
+    .ci-item .ci-text .ci-val a:hover {
+      color: var(--primary);
+    }
+
+    /* Working hours */
+    .hours-table {
+      background: var(--bg-white);
+      border-radius: 12px;
+      padding: 24px;
+      border: 1px solid var(--border);
+      margin-bottom: 32px;
+    }
+
+    .hours-table h4 {
+      font-size: 1rem;
+      margin-bottom: 16px;
+      color: var(--text-dark);
+    }
+
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.875rem;
+    }
+
+    .hours-row:last-child { border-bottom: none; }
+    .hours-row .day { color: var(--text-body); }
+    .hours-row .time { color: var(--primary); font-weight: 500; }
+    .hours-row .closed { color: var(--text-light); }
+
+    /* Social links */
+    .social-links h4 {
+      font-size: 1rem;
+      margin-bottom: 16px;
+      color: var(--text-dark);
+    }
+
+    .social-list {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-link {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--text-body);
+      transition: all var(--transition);
+      cursor: pointer;
+    }
+
+    .social-link:hover {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    /* Contact Form */
+    .contact-form-panel {
+      background: var(--bg-white);
+      border-radius: 20px;
+      padding: 48px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-form-panel h3 {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+    }
+
+    .contact-form-panel .form-sub {
+      font-size: 0.875rem;
+      color: var(--text-light);
+      margin-bottom: 32px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.875rem;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .form-group label .req {
+      color: #e53935;
+      margin-left: 2px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: 'Noto Sans SC', sans-serif;
+      color: var(--text-dark);
+      background: var(--bg-cream);
+      transition: all var(--transition);
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--primary);
+      background: var(--bg-white);
+      box-shadow: 0 0 0 3px rgba(26,94,58,0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 140px;
+      line-height: 1.7;
+    }
+
+    .form-group select {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23777' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+    }
+
+    .form-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .form-check input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+
+    .form-check label {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      line-height: 1.6;
+      cursor: pointer;
+    }
+
+    .form-check label a { color: var(--primary); }
+
+    .form-submit {
+      width: 100%;
+      padding: 14px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: 'Noto Sans SC', sans-serif;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .form-submit:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(26,94,58,0.3);
+    }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .form-success .s-icon { font-size: 4rem; margin-bottom: 16px; }
+    .form-success h4 { font-size: 1.3rem; margin-bottom: 8px; }
+    .form-success p { color: var(--text-light); }
+
+    /* Map section */
+    .map-section { background: var(--bg-white); }
+
+    .map-container {
+      border-radius: 20px;
+      overflow: hidden;
+      height: 400px;
+      background: linear-gradient(135deg, #e8f0e8, #d4e4d4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+
+    .map-placeholder-content {
+      text-align: center;
+      color: var(--text-light);
+    }
+
+    .map-placeholder-content .mp-icon { font-size: 4rem; margin-bottom: 16px; }
+    .map-placeholder-content h3 { font-size: 1.2rem; color: var(--primary); margin-bottom: 8px; }
+    .map-placeholder-content p { font-size: 0.9rem; }
+
+    .map-info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .map-info-card {
+      background: var(--bg-cream);
+      border-radius: 12px;
+      padding: 28px 24px;
+      border: 1px solid var(--border);
+      text-align: center;
+      transition: all var(--transition);
+    }
+
+    .map-info-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .map-info-card .mi-icon { font-size: 2.5rem; margin-bottom: 12px; }
+    .map-info-card h4 { font-size: 1rem; margin-bottom: 8px; }
+    .map-info-card p { font-size: 0.85rem; color: var(--text-light); line-height: 1.6; }
+
+    /* Overseas contact */
+    .overseas-section { background: var(--bg-cream); }
+
+    .overseas-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .ow-card {
+      background: var(--bg-white);
+      border-radius: 14px;
+      padding: 32px 24px;
+      border: 1px solid var(--border);
+      transition: all var(--transition);
+    }
+
+    .ow-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: var(--accent);
+    }
+
+    .ow-card .ow-flag { font-size: 2.5rem; margin-bottom: 12px; }
+    .ow-card h3 { font-size: 1.05rem; margin-bottom: 6px; }
+    .ow-card .ow-city { font-size: 0.8rem; color: var(--accent); letter-spacing: 1px; margin-bottom: 16px; }
+    .ow-card .ow-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .ow-card .ow-row {
+      display: flex;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--text-body);
+    }
+    .ow-card .ow-row .ow-icon { flex-shrink: 0; }
+
+    @media (max-width: 1024px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .contact-info-panel { position: static; }
+      .map-info-grid { grid-template-columns: 1fr 1fr; }
+      .overseas-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .contact-form-panel { padding: 28px 20px; }
+      .form-row { grid-template-columns: 1fr; }
+      .map-info-grid { grid-template-columns: 1fr; }
+      .overseas-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="mobile-overlay"></div>
+
+  <header class="header scrolled">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">国合</div>
+        <div class="logo-text">
+          <span class="cn">杨凌国合跨境贸易</span>
+          <span class="en">Yangling Guohe Cross-border Trade</span>
+        </div>
+      </a>
+      <div class="menu-toggle"><span></span><span></span><span></span></div>
+      <nav class="nav">
+        <a href="index.html">首页</a>
+        <a href="about.html">关于我们</a>
+        <a href="products.html">产品中心</a>
+        <a href="global.html">全球布局</a>
+        <a href="news.html">新闻中心</a>
+        <a href="contact.html" class="active">联系我们</a>
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="zh">中文</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="ru">РУ</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-banner">
+    <div>
+      <h1>联系我们</h1>
+      <div class="breadcrumb"><a href="index.html">首页</a> / 联系我们</div>
+    </div>
+  </section>
+
+  <!-- Contact Main -->
+  <section class="section contact-section">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Info Panel -->
+        <div class="contact-info-panel fade-in-left">
+          <h2>与我们联系</h2>
+          <p class="sub">
+            无论是商务合作、产品询盘，还是物流合作，我们的团队随时准备为您提供专业服务。请通过以下方式联系我们。
+          </p>
+
+          <div class="contact-info-list" id="contact-info-list">
+            <!-- 动态渲染联系信息 -->
+          </div>
+
+          <div class="hours-table">
+            <h4>工作时间</h4>
+            <div class="hours-row">
+              <span class="day">周一 — 周五</span>
+              <span class="time">09:00 — 18:00</span>
+            </div>
+            <div class="hours-row">
+              <span class="day">周六</span>
+              <span class="time">09:00 — 12:00</span>
+            </div>
+            <div class="hours-row">
+              <span class="day">周日 / 法定节假日</span>
+              <span class="closed">休息</span>
+            </div>
+          </div>
+
+          <div class="social-links">
+            <h4>关注我们</h4>
+            <div class="social-list">
+              <div class="social-link" title="微信">微</div>
+              <div class="social-link" title="微博">博</div>
+              <div class="social-link" title="抖音">抖</div>
+              <div class="social-link" title="LinkedIn">in</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form Panel -->
+        <div class="contact-form-panel fade-in-right">
+          <h3>发送询盘 / 合作咨询</h3>
+          <p class="form-sub">请填写以下信息，我们将在1个工作日内回复您。</p>
+
+          <form id="contact-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label>姓名 <span class="req">*</span></label>
+                <input type="text" placeholder="请输入您的姓名" required>
+              </div>
+              <div class="form-group">
+                <label>公司 <span class="req">*</span></label>
+                <input type="text" placeholder="公司 / 组织名称" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>电话 <span class="req">*</span></label>
+                <input type="tel" placeholder="+86 / 国际区号 + 号码" required>
+              </div>
+              <div class="form-group">
+                <label>邮箱</label>
+                <input type="email" placeholder="example@company.com">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>国家 / 地区 <span class="req">*</span></label>
+              <select required>
+                <option value="">请选择您所在的国家 / 地区</option>
+                <optgroup label="中国">
+                  <option>中国大陆</option>
+                  <option>中国香港</option>
+                  <option>中国台湾</option>
+                </optgroup>
+                <optgroup label="中亚 · 独联体">
+                  <option>俄罗斯</option>
+                  <option>哈萨克斯坦</option>
+                  <option>乌兹别克斯坦</option>
+                  <option>白俄罗斯</option>
+                  <option>阿塞拜疆</option>
+                  <option>格鲁吉亚</option>
+                  <option>吉尔吉斯斯坦</option>
+                  <option>土库曼斯坦</option>
+                </optgroup>
+                <optgroup label="中东">
+                  <option>阿联酋</option>
+                  <option>沙特阿拉伯</option>
+                  <option>卡塔尔</option>
+                  <option>伊朗</option>
+                  <option>巴基斯坦</option>
+                </optgroup>
+                <optgroup label="东南亚">
+                  <option>泰国</option>
+                  <option>越南</option>
+                  <option>马来西亚</option>
+                  <option>印度尼西亚</option>
+                </optgroup>
+                <optgroup label="其他">
+                  <option>欧洲</option>
+                  <option>美洲</option>
+                  <option>非洲</option>
+                  <option>其他地区</option>
+                </optgroup>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>咨询类型 <span class="req">*</span></label>
+              <select required>
+                <option value="">请选择您的咨询类型</option>
+                <option>出口产品采购询盘</option>
+                <option>进口商品供应合作</option>
+                <option>二手车出口业务</option>
+                <option>国际物流合作</option>
+                <option>海外仓储合作</option>
+                <option>其他业务合作</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>询盘内容 <span class="req">*</span></label>
+              <textarea placeholder="请详细描述您的需求，包括：所需产品 / 服务类型、数量 / 规格、目的地国家、期望合作方式等信息，以便我们为您提供更精准的报价。" required></textarea>
+            </div>
+
+            <div class="form-check">
+              <input type="checkbox" id="agree" required>
+              <label for="agree">我已阅读并同意 <a href="#">隐私政策</a>，授权杨凌国合跨境贸易有限公司处理我的联系信息，用于商务回复。</label>
+            </div>
+
+            <button type="submit" class="form-submit">提交询盘</button>
+          </form>
+
+          <div class="form-success" id="form-success">
+            <div class="s-icon">✅</div>
+            <h4>询盘已成功提交！</h4>
+            <p>感谢您的联系，我们的商务团队将在1个工作日内与您取得联系。</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="section map-section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div class="en-title">Location</div>
+        <h2>公司位置</h2>
+      </div>
+
+      <div class="map-container fade-in">
+        <div class="map-placeholder-content">
+          <div class="mp-icon">📍</div>
+          <h3>杨凌综合保税区</h3>
+          <p>陕西省咸阳市杨凌农业高新技术产业示范区</p>
+        </div>
+      </div>
+
+      <div class="map-info-grid">
+        <div class="map-info-card fade-in" data-delay="0">
+          <div class="mi-icon">🚆</div>
+          <h4>高铁</h4>
+          <p>杨凌站（西宝高铁），西安北站直达约23分钟，宝鸡南站约20分钟</p>
+        </div>
+        <div class="map-info-card fade-in" data-delay="150">
+          <div class="mi-icon">✈️</div>
+          <h4>航空</h4>
+          <p>西安咸阳国际机场（约60km），可乘大巴或打车前往杨凌，约50分钟</p>
+        </div>
+        <div class="map-info-card fade-in" data-delay="300">
+          <div class="mi-icon">🚗</div>
+          <h4>自驾</h4>
+          <p>G30连霍高速杨凌出口下高速，或沿107省道抵达杨凌综合保税区</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Overseas Contacts -->
+  <section class="section overseas-section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div class="en-title">Overseas Contacts</div>
+        <h2>海外联络处</h2>
+      </div>
+
+      <div class="overseas-grid" id="overseas-grid">
+        <!-- 动态渲染海外联络处 -->
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <div class="logo-icon" style="background: var(--primary);">国合</div>
+            <div class="logo-text">
+              <span class="cn">杨凌国合跨境贸易</span>
+              <span class="en">Yangling Guohe Cross-border Trade</span>
+            </div>
+          </div>
+          <p>杨凌现代农业国际合作集团有限公司全资子公司，专注于跨境农产品进出口贸易，依托杨凌自贸片区与上合组织农业基地，连接中国与世界。</p>
+          <div class="footer-social">
+            <a href="#" title="微信">微</a>
+            <a href="#" title="微博">博</a>
+            <a href="#" title="抖音">抖</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>快速导航</h4>
+          <ul>
+            <li><a href="about.html">关于我们</a></li>
+            <li><a href="products.html">产品中心</a></li>
+            <li><a href="global.html">全球布局</a></li>
+            <li><a href="news.html">新闻中心</a></li>
+            <li><a href="contact.html">联系我们</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>核心产品</h4>
+          <ul>
+            <li><a href="products.html">猕猴桃</a></li>
+            <li><a href="products.html">阳光玫瑰葡萄</a></li>
+            <li><a href="products.html">蓝莓</a></li>
+            <li><a href="products.html">苹果</a></li>
+            <li><a href="products.html">酥梨 / 冬枣</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>联系方式</h4>
+          <ul class="footer-contact">
+            <li><span class="icon">📍</span><span>陕西省杨凌示范区·杨凌综合保税区</span></li>
+            <li><span class="icon">📧</span><span>info@ylguohe.com</span></li>
+            <li><span class="icon">📞</span><span>029-8703-9533</span></li>
+            <li><span class="icon">🕐</span><span>周一至周五 9:00 - 18:00</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2025 杨凌国合跨境贸易有限公司 版权所有</span>
+        <span><a href="#">隐私政策</a> &nbsp;|&nbsp; <a href="#">使用条款</a> &nbsp;|&nbsp; <a href="#">陕ICP备XXXXXXXX号</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="回到顶部">↑</button>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/contact-page.js"></script>
+  <script src="js/i18n.js"></script>
+  <script>
+    window.PAGE_TRANSLATIONS = {
+      zh: {
+        bannerTitle: '联系我们',
+        bannerBreadcrumb: '联系我们',
+        bannerBreadcrumbHome: '首页',
+        infoTitle: '与我们联系',
+        infoSub: '无论是商务合作、产品询盘，还是物流合作，我们的团队随时准备为您提供专业服务。请通过以下方式联系我们。',
+        hoursTitle: '工作时间',
+        hoursWeekday: '周一 — 周五',
+        hoursWeekdayTime: '09:00 — 18:00',
+        hoursSat: '周六',
+        hoursSatTime: '09:00 — 12:00',
+        hoursSun: '周日 / 法定节假日',
+        hoursClosed: '休息',
+        socialTitle: '关注我们',
+        formTitle: '发送询盘 / 合作咨询',
+        formSub: '请填写以下信息，我们将在1个工作日内回复您。',
+        labelName: '姓名',
+        labelCompany: '公司',
+        labelPhone: '电话',
+        labelEmail: '邮箱',
+        labelCountry: '国家 / 地区',
+        labelType: '咨询类型',
+        labelMessage: '询盘内容',
+        phName: '请输入您的姓名',
+        phCompany: '公司 / 组织名称',
+        phPhone: '+86 / 国际区号 + 号码',
+        phEmail: 'example@company.com',
+        phCountry: '请选择您所在的国家 / 地区',
+        phType: '请选择您的咨询类型',
+        phMessage: '请详细描述您的需求，包括：所需产品 / 服务类型、数量 / 规格、目的地国家、期望合作方式等信息，以便我们为您提供更精准的报价。',
+        typeOptions: ['出口产品采购询盘', '进口商品供应合作', '二手车出口业务', '国际物流合作', '海外仓储合作', '其他业务合作'],
+        agreeText: '我已阅读并同意 <a href="#">隐私政策</a>，授权杨凌国合跨境贸易有限公司处理我的联系信息，用于商务回复。',
+        submitBtn: '提交询盘',
+        successTitle: '询盘已成功提交！',
+        successDesc: '感谢您的联系，我们的商务团队将在1个工作日内与您取得联系。',
+        mapEnTitle: 'Location',
+        mapTitle: '公司位置',
+        mapPlaceName: '杨凌综合保税区',
+        mapPlaceAddr: '陕西省咸阳市杨凌农业高新技术产业示范区',
+        mapCard1Title: '高铁',
+        mapCard1Desc: '杨凌站（西宝高铁），西安北站直达约23分钟，宝鸡南站约20分钟',
+        mapCard2Title: '航空',
+        mapCard2Desc: '西安咸阳国际机场（约60km），可乘大巴或打车前往杨凌，约50分钟',
+        mapCard3Title: '自驾',
+        mapCard3Desc: 'G30连霍高速杨凌出口下高速，或沿107省道抵达杨凌综合保税区',
+        overseasEnTitle: 'Overseas Contacts',
+        overseasTitle: '海外联络处'
+      },
+      en: {
+        bannerTitle: 'Contact Us',
+        bannerBreadcrumb: 'Contact',
+        bannerBreadcrumbHome: 'Home',
+        infoTitle: 'Get in Touch',
+        infoSub: 'Whether it\'s business cooperation, product inquiries, or logistics partnerships, our team is ready to provide professional services. Please contact us through the following channels.',
+        hoursTitle: 'Business Hours',
+        hoursWeekday: 'Monday — Friday',
+        hoursWeekdayTime: '09:00 — 18:00',
+        hoursSat: 'Saturday',
+        hoursSatTime: '09:00 — 12:00',
+        hoursSun: 'Sunday / Public Holidays',
+        hoursClosed: 'Closed',
+        socialTitle: 'Follow Us',
+        formTitle: 'Send an Inquiry / Cooperation Consultation',
+        formSub: 'Please fill in the information below. We will respond within 1 business day.',
+        labelName: 'Name',
+        labelCompany: 'Company',
+        labelPhone: 'Phone',
+        labelEmail: 'Email',
+        labelCountry: 'Country / Region',
+        labelType: 'Inquiry Type',
+        labelMessage: 'Message',
+        phName: 'Enter your name',
+        phCompany: 'Company / Organization name',
+        phPhone: '+86 / International code + Number',
+        phEmail: 'example@company.com',
+        phCountry: 'Select your country / region',
+        phType: 'Select your inquiry type',
+        phMessage: 'Please describe your requirements in detail, including: product/service type, quantity/specifications, destination country, preferred cooperation method, etc., so we can provide an accurate quote.',
+        typeOptions: ['Export Product Purchase Inquiry', 'Import Supply Cooperation', 'Used Vehicle Export', 'International Logistics Cooperation', 'Overseas Warehousing Cooperation', 'Other Business Cooperation'],
+        agreeText: 'I have read and agree to the <a href="#">Privacy Policy</a>, authorizing Yangling Guohe Cross-border Trade Co., Ltd. to process my contact information for business response purposes.',
+        submitBtn: 'Submit Inquiry',
+        successTitle: 'Inquiry Submitted Successfully!',
+        successDesc: 'Thank you for contacting us. Our business team will reach out to you within 1 business day.',
+        mapEnTitle: 'Location',
+        mapTitle: 'Company Location',
+        mapPlaceName: 'Yangling Comprehensive Bonded Zone',
+        mapPlaceAddr: 'Yangling Agricultural Hi-tech Industries Demonstration Zone, Xianyang, Shaanxi, China',
+        mapCard1Title: 'High-Speed Rail',
+        mapCard1Desc: 'Yangling Station (Xi\'an-Baoji HSR), approx. 23 min from Xi\'an North Station, approx. 20 min from Baoji South Station',
+        mapCard2Title: 'Aviation',
+        mapCard2Desc: 'Xi\'an Xianyang International Airport (approx. 60km), approx. 50 min by bus or taxi to Yangling',
+        mapCard3Title: 'Driving',
+        mapCard3Desc: 'Exit at Yangling on the G30 Lianhuo Expressway, or take Provincial Road 107 to Yangling Comprehensive Bonded Zone',
+        overseasEnTitle: 'Overseas Contacts',
+        overseasTitle: 'Overseas Liaison Offices'
+      },
+      ru: {
+        bannerTitle: 'Контакты',
+        bannerBreadcrumb: 'Контакты',
+        bannerBreadcrumbHome: 'Главная',
+        infoTitle: 'Свяжитесь с нами',
+        infoSub: 'Будь то деловое сотрудничество, запрос на продукцию или логистическое партнёрство — наша команда готова предоставить профессиональные услуги. Свяжитесь с нами любым удобным способом.',
+        hoursTitle: 'Время работы',
+        hoursWeekday: 'Понедельник — Пятница',
+        hoursWeekdayTime: '09:00 — 18:00',
+        hoursSat: 'Суббота',
+        hoursSatTime: '09:00 — 12:00',
+        hoursSun: 'Воскресенье / Праздники',
+        hoursClosed: 'Выходной',
+        socialTitle: 'Мы в соцсетях',
+        formTitle: 'Отправить запрос / Консультация',
+        formSub: 'Заполните форму ниже, и мы ответим в течение 1 рабочего дня.',
+        labelName: 'Имя',
+        labelCompany: 'Компания',
+        labelPhone: 'Телефон',
+        labelEmail: 'Эл. почта',
+        labelCountry: 'Страна / Регион',
+        labelType: 'Тип запроса',
+        labelMessage: 'Сообщение',
+        phName: 'Введите ваше имя',
+        phCompany: 'Название компании / организации',
+        phPhone: '+7 / Международный код + Номер',
+        phEmail: 'example@company.com',
+        phCountry: 'Выберите вашу страну / регион',
+        phType: 'Выберите тип запроса',
+        phMessage: 'Подробно опишите ваши потребности: тип продукции/услуг, количество/спецификации, страна назначения, предпочтительный формат сотрудничества и т.д., чтобы мы могли предоставить точное коммерческое предложение.',
+        typeOptions: ['Запрос на закупку экспортной продукции', 'Сотрудничество по импортным поставкам', 'Экспорт подержанных автомобилей', 'Международная логистика', 'Зарубежное складирование', 'Прочее деловое сотрудничество'],
+        agreeText: 'Я прочитал(а) и принимаю <a href="#">Политику конфиденциальности</a>, разрешая Yangling Guohe Cross-border Trade Co., Ltd. обрабатывать мои контактные данные для деловой переписки.',
+        submitBtn: 'Отправить запрос',
+        successTitle: 'Запрос успешно отправлен!',
+        successDesc: 'Спасибо за обращение. Наша коммерческая команда свяжется с вами в течение 1 рабочего дня.',
+        mapEnTitle: 'Location',
+        mapTitle: 'Расположение компании',
+        mapPlaceName: 'Комплексная бондовая зона Янлин',
+        mapPlaceAddr: 'Демонстрационная зона высокотехнологичных сельскохозяйственных отраслей Янлин, Сяньян, Шэньси, Китай',
+        mapCard1Title: 'Скоростной поезд',
+        mapCard1Desc: 'Станция Янлин (ВСМ Сиань-Баоцзи), ~23 мин от станции Сиань-Север, ~20 мин от станции Баоцзи-Юг',
+        mapCard2Title: 'Авиа',
+        mapCard2Desc: 'Международный аэропорт Сиань Сяньян (~60 км), ~50 мин на автобусе или такси до Янлин',
+        mapCard3Title: 'Автомобиль',
+        mapCard3Desc: 'Съезд Янлин на скоростной автомагистрали G30 Ляньхо, или по провинциальной дороге 107 до Комплексной бондовой зоны Янлин',
+        overseasEnTitle: 'Overseas Contacts',
+        overseasTitle: 'Зарубежные представительства'
+      }
+    };
+
+    window.applyPageLang = function(t, lang) {
+      // Banner
+      var bannerH1 = document.querySelector('.page-banner h1');
+      if (bannerH1) bannerH1.textContent = t.bannerTitle;
+      var breadcrumb = document.querySelector('.page-banner .breadcrumb');
+      if (breadcrumb) breadcrumb.innerHTML = '<a href="index.html">' + t.bannerBreadcrumbHome + '</a> / ' + t.bannerBreadcrumb;
+
+      // Contact info panel
+      var infoPanel = document.querySelector('.contact-info-panel');
+      if (infoPanel) {
+        var h2 = infoPanel.querySelector('h2');
+        if (h2) h2.textContent = t.infoTitle;
+        var sub = infoPanel.querySelector('.sub');
+        if (sub) sub.textContent = t.infoSub;
+      }
+
+      // Hours table
+      var hoursTable = document.querySelector('.hours-table');
+      if (hoursTable) {
+        var h4 = hoursTable.querySelector('h4');
+        if (h4) h4.textContent = t.hoursTitle;
+        var rows = hoursTable.querySelectorAll('.hours-row');
+        if (rows[0]) {
+          rows[0].querySelector('.day').textContent = t.hoursWeekday;
+          rows[0].querySelector('.time').textContent = t.hoursWeekdayTime;
+        }
+        if (rows[1]) {
+          rows[1].querySelector('.day').textContent = t.hoursSat;
+          rows[1].querySelector('.time').textContent = t.hoursSatTime;
+        }
+        if (rows[2]) {
+          rows[2].querySelector('.day').textContent = t.hoursSun;
+          rows[2].querySelector('.closed').textContent = t.hoursClosed;
+        }
+      }
+
+      // Social links title
+      var socialH4 = document.querySelector('.social-links h4');
+      if (socialH4) socialH4.textContent = t.socialTitle;
+
+      // Form panel
+      var formPanel = document.querySelector('.contact-form-panel');
+      if (formPanel) {
+        var h3 = formPanel.querySelector('h3');
+        if (h3) h3.textContent = t.formTitle;
+        var formSub = formPanel.querySelector('.form-sub');
+        if (formSub) formSub.textContent = t.formSub;
+      }
+
+      // Form labels and placeholders
+      var form = document.getElementById('contact-form');
+      if (form) {
+        var labels = form.querySelectorAll('label');
+        var formGroups = form.querySelectorAll('.form-group');
+
+        // Name
+        if (formGroups[0]) {
+          var lbl = formGroups[0].querySelector('label');
+          if (lbl) lbl.innerHTML = t.labelName + ' <span class="req">*</span>';
+          var input = formGroups[0].querySelector('input');
+          if (input) input.placeholder = t.phName;
+        }
+        // Company
+        if (formGroups[1]) {
+          var lbl = formGroups[1].querySelector('label');
+          if (lbl) lbl.innerHTML = t.labelCompany + ' <span class="req">*</span>';
+          var input = formGroups[1].querySelector('input');
+          if (input) input.placeholder = t.phCompany;
+        }
+        // Phone
+        if (formGroups[2]) {
+          var lbl = formGroups[2].querySelector('label');
+          if (lbl) lbl.innerHTML = t.labelPhone + ' <span class="req">*</span>';
+          var input = formGroups[2].querySelector('input');
+          if (input) input.placeholder = t.phPhone;
+        }
+        // Email
+        if (formGroups[3]) {
+          var lbl = formGroups[3].querySelector('label');
+          if (lbl) lbl.textContent = t.labelEmail;
+          var input = formGroups[3].querySelector('input');
+          if (input) input.placeholder = t.phEmail;
+        }
+        // Country select
+        if (formGroups[4]) {
+          var lbl = formGroups[4].querySelector('label');
+          if (lbl) lbl.innerHTML = t.labelCountry + ' <span class="req">*</span>';
+          var select = formGroups[4].querySelector('select');
+          if (select && select.options[0]) select.options[0].textContent = t.phCountry;
+        }
+        // Type select
+        if (formGroups[5]) {
+          var lbl = formGroups[5].querySelector('label');
+          if (lbl) lbl.innerHTML = t.labelType + ' <span class="req">*</span>';
+          var select = formGroups[5].querySelector('select');
+          if (select) {
+            if (select.options[0]) select.options[0].textContent = t.phType;
+            for (var i = 0; i < t.typeOptions.length; i++) {
+              if (select.options[i + 1]) select.options[i + 1].textContent = t.typeOptions[i];
+            }
+          }
+        }
+        // Message
+        if (formGroups[6]) {
+          var lbl = formGroups[6].querySelector('label');
+          if (lbl) lbl.innerHTML = t.labelMessage + ' <span class="req">*</span>';
+          var ta = formGroups[6].querySelector('textarea');
+          if (ta) ta.placeholder = t.phMessage;
+        }
+
+        // Checkbox label
+        var checkLabel = form.querySelector('.form-check label');
+        if (checkLabel) checkLabel.innerHTML = t.agreeText;
+
+        // Submit button
+        var submitBtn = form.querySelector('.form-submit');
+        if (submitBtn) submitBtn.textContent = t.submitBtn;
+      }
+
+      // Success message
+      var success = document.getElementById('form-success');
+      if (success) {
+        var h4 = success.querySelector('h4');
+        if (h4) h4.textContent = t.successTitle;
+        var p = success.querySelector('p');
+        if (p) p.textContent = t.successDesc;
+      }
+
+      // Map section
+      var mapHeader = document.querySelector('.map-section .section-header');
+      if (mapHeader) {
+        var enT = mapHeader.querySelector('.en-title');
+        if (enT) enT.textContent = t.mapEnTitle;
+        var h2 = mapHeader.querySelector('h2');
+        if (h2) h2.textContent = t.mapTitle;
+      }
+
+      var mapContent = document.querySelector('.map-placeholder-content');
+      if (mapContent) {
+        var h3 = mapContent.querySelector('h3');
+        if (h3) h3.textContent = t.mapPlaceName;
+        var p = mapContent.querySelector('p');
+        if (p) p.textContent = t.mapPlaceAddr;
+      }
+
+      // Map info cards
+      var mapCards = document.querySelectorAll('.map-info-card');
+      if (mapCards[0]) {
+        mapCards[0].querySelector('h4').textContent = t.mapCard1Title;
+        mapCards[0].querySelector('p').textContent = t.mapCard1Desc;
+      }
+      if (mapCards[1]) {
+        mapCards[1].querySelector('h4').textContent = t.mapCard2Title;
+        mapCards[1].querySelector('p').textContent = t.mapCard2Desc;
+      }
+      if (mapCards[2]) {
+        mapCards[2].querySelector('h4').textContent = t.mapCard3Title;
+        mapCards[2].querySelector('p').textContent = t.mapCard3Desc;
+      }
+
+      // Overseas section
+      var overseasHeader = document.querySelector('.overseas-section .section-header');
+      if (overseasHeader) {
+        var enT = overseasHeader.querySelector('.en-title');
+        if (enT) enT.textContent = t.overseasEnTitle;
+        var h2 = overseasHeader.querySelector('h2');
+        if (h2) h2.textContent = t.overseasTitle;
+      }
+    };
+  </script>
+</body>
+</html>

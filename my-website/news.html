@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新闻中心 | 杨凌国合跨境贸易有限公司</title>
+  <meta name="description" content="杨凌国合跨境贸易新闻中心：最新出口动态、业务突破、展会活动、公司公告等资讯。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ---- News page ---- */
+    .news-page-section { background: var(--bg-cream); }
+
+    /* Featured article */
+    .featured-article {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 48px;
+      align-items: center;
+      background: var(--bg-white);
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 64px;
+      box-shadow: var(--shadow);
+    }
+
+    .featured-img {
+      aspect-ratio: 16/10;
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 6rem;
+      position: relative;
+    }
+
+    .featured-img .feat-date {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: var(--accent);
+      color: #fff;
+      padding: 6px 16px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .featured-img .feat-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--primary);
+      color: #fff;
+      padding: 6px 16px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+    }
+
+    .featured-body {
+      padding: 40px 40px 40px 0;
+    }
+
+    .featured-body .f-cat {
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .featured-body h2 {
+      font-size: 1.6rem;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .featured-body p {
+      color: var(--text-body);
+      line-height: 1.9;
+      margin-bottom: 24px;
+    }
+
+    /* Filter tabs */
+    .news-filter {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 8px 22px;
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      background: transparent;
+      color: var(--text-body);
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all var(--transition);
+      font-family: 'Noto Sans SC', sans-serif;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    /* News list grid */
+    .news-list-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .news-item {
+      background: var(--bg-white);
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: all var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .news-item:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: transparent;
+    }
+
+    .news-item .ni-img {
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .news-item .ni-img .ni-date {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background: rgba(0,0,0,0.5);
+      color: #fff;
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      backdrop-filter: blur(4px);
+    }
+
+    .news-item .ni-body {
+      padding: 22px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .news-item .ni-cat {
+      font-size: 0.72rem;
+      color: var(--accent);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .news-item .ni-body h4 {
+      font-size: 1rem;
+      margin-bottom: 10px;
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    .news-item .ni-body p {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      line-height: 1.7;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+
+    .news-item .ni-read {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      color: var(--primary);
+      font-weight: 500;
+    }
+
+    .news-item .ni-read::after {
+      content: '→';
+      transition: transform var(--transition);
+    }
+
+    .news-item:hover .ni-read::after {
+      transform: translateX(4px);
+    }
+
+    /* Load more */
+    .news-load-more {
+      text-align: center;
+      margin-top: 48px;
+    }
+
+    /* Category tag colors */
+    .cat-export { color: #1a5e3a; }
+    .cat-import { color: #2a7ec8; }
+    .cat-vehicle { color: #8b4513; }
+    .cat-company { color: #6b4a9e; }
+    .cat-event { color: #c84a1a; }
+
+    @media (max-width: 1024px) {
+      .featured-article {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      .featured-body { padding: 32px; }
+      .news-list-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .news-list-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="mobile-overlay"></div>
+
+  <header class="header scrolled">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">国合</div>
+        <div class="logo-text">
+          <span class="cn">杨凌国合跨境贸易</span>
+          <span class="en">Yangling Guohe Cross-border Trade</span>
+        </div>
+      </a>
+      <div class="menu-toggle"><span></span><span></span><span></span></div>
+      <nav class="nav">
+        <a href="index.html">首页</a>
+        <a href="about.html">关于我们</a>
+        <a href="products.html">产品中心</a>
+        <a href="global.html">全球布局</a>
+        <a href="news.html" class="active">新闻中心</a>
+        <a href="contact.html">联系我们</a>
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="zh">中文</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="ru">РУ</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-banner">
+    <div>
+      <h1>新闻中心</h1>
+      <div class="breadcrumb"><a href="index.html">首页</a> / 新闻中心</div>
+    </div>
+  </section>
+
+  <section class="section news-page-section">
+    <div class="container">
+
+      <!-- Featured Article -->
+      <div class="featured-article fade-in" id="featured-article">
+        <!-- 动态渲染置顶新闻 -->
+      </div>
+
+      <!-- Filter -->
+      <div class="news-filter fade-in">
+        <button class="filter-btn active" data-filter="all">全部</button>
+        <button class="filter-btn" data-filter="export">出口动态</button>
+        <button class="filter-btn" data-filter="import">进口业务</button>
+        <button class="filter-btn" data-filter="vehicle">二手车出口</button>
+        <button class="filter-btn" data-filter="company">公司动态</button>
+        <button class="filter-btn" data-filter="event">展会活动</button>
+      </div>
+
+      <!-- News Grid -->
+      <div class="news-list-grid" id="news-list-grid">
+        <!-- 动态渲染新闻列表 -->
+      </div>
+
+      <div class="news-load-more fade-in">
+        <button class="btn btn-green">加载更多</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container fade-in">
+      <h2>关注最新动态</h2>
+      <p>订阅我们的新闻通讯，第一时间获取公司最新资讯、产品动态与市场报告。</p>
+      <div class="cta-btns">
+        <a href="contact.html" class="btn btn-primary">联系我们</a>
+        <a href="products.html" class="btn btn-outline">查看产品</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <div class="logo-icon" style="background: var(--primary);">国合</div>
+            <div class="logo-text">
+              <span class="cn">杨凌国合跨境贸易</span>
+              <span class="en">Yangling Guohe Cross-border Trade</span>
+            </div>
+          </div>
+          <p>杨凌现代农业国际合作集团有限公司全资子公司，专注于跨境农产品进出口贸易，依托杨凌自贸片区与上合组织农业基地，连接中国与世界。</p>
+          <div class="footer-social">
+            <a href="#" title="微信">微</a>
+            <a href="#" title="微博">博</a>
+            <a href="#" title="抖音">抖</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>快速导航</h4>
+          <ul>
+            <li><a href="about.html">关于我们</a></li>
+            <li><a href="products.html">产品中心</a></li>
+            <li><a href="global.html">全球布局</a></li>
+            <li><a href="news.html">新闻中心</a></li>
+            <li><a href="contact.html">联系我们</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>核心产品</h4>
+          <ul>
+            <li><a href="products.html">猕猴桃</a></li>
+            <li><a href="products.html">阳光玫瑰葡萄</a></li>
+            <li><a href="products.html">蓝莓</a></li>
+            <li><a href="products.html">苹果</a></li>
+            <li><a href="products.html">酥梨 / 冬枣</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>联系方式</h4>
+          <ul class="footer-contact">
+            <li><span class="icon">📍</span><span>陕西省杨凌示范区·杨凌综合保税区</span></li>
+            <li><span class="icon">📧</span><span>info@ylguohe.com</span></li>
+            <li><span class="icon">📞</span><span>029-8703-9533</span></li>
+            <li><span class="icon">🕐</span><span>周一至周五 9:00 - 18:00</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2025 杨凌国合跨境贸易有限公司 版权所有</span>
+        <span><a href="#">隐私政策</a> &nbsp;|&nbsp; <a href="#">使用条款</a> &nbsp;|&nbsp; <a href="#">陕ICP备XXXXXXXX号</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="回到顶部">↑</button>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/news-page.js"></script>
+  <script src="js/i18n.js"></script>
+  <script>
+    window.PAGE_TRANSLATIONS = {
+      zh: {
+        bannerTitle: '新闻中心',
+        bannerBreadcrumb: '新闻中心',
+        bannerBreadcrumbHome: '首页',
+        filterAll: '全部',
+        filterExport: '出口动态',
+        filterImport: '进口业务',
+        filterVehicle: '二手车出口',
+        filterCompany: '公司动态',
+        filterEvent: '展会活动',
+        loadMore: '加载更多',
+        ctaTitle: '关注最新动态',
+        ctaDesc: '订阅我们的新闻通讯，第一时间获取公司最新资讯、产品动态与市场报告。',
+        ctaBtn1: '联系我们',
+        ctaBtn2: '查看产品'
+      },
+      en: {
+        bannerTitle: 'News Center',
+        bannerBreadcrumb: 'News',
+        bannerBreadcrumbHome: 'Home',
+        filterAll: 'All',
+        filterExport: 'Export Updates',
+        filterImport: 'Import Business',
+        filterVehicle: 'Vehicle Export',
+        filterCompany: 'Company News',
+        filterEvent: 'Events & Exhibitions',
+        loadMore: 'Load More',
+        ctaTitle: 'Stay Up to Date',
+        ctaDesc: 'Subscribe to our newsletter to receive the latest company news, product updates, and market reports.',
+        ctaBtn1: 'Contact Us',
+        ctaBtn2: 'View Products'
+      },
+      ru: {
+        bannerTitle: 'Новости',
+        bannerBreadcrumb: 'Новости',
+        bannerBreadcrumbHome: 'Главная',
+        filterAll: 'Все',
+        filterExport: 'Экспорт',
+        filterImport: 'Импорт',
+        filterVehicle: 'Экспорт авто',
+        filterCompany: 'Компания',
+        filterEvent: 'Выставки',
+        loadMore: 'Загрузить ещё',
+        ctaTitle: 'Следите за новостями',
+        ctaDesc: 'Подпишитесь на нашу рассылку, чтобы первыми получать новости компании, обновления продукции и аналитические отчёты.',
+        ctaBtn1: 'Связаться с нами',
+        ctaBtn2: 'Смотреть продукцию'
+      }
+    };
+
+    window.applyPageLang = function(t, lang) {
+      // Banner
+      var bannerH1 = document.querySelector('.page-banner h1');
+      if (bannerH1) bannerH1.textContent = t.bannerTitle;
+      var breadcrumb = document.querySelector('.page-banner .breadcrumb');
+      if (breadcrumb) breadcrumb.innerHTML = '<a href="index.html">' + t.bannerBreadcrumbHome + '</a> / ' + t.bannerBreadcrumb;
+
+      // Filter buttons
+      var filterBtns = document.querySelectorAll('.filter-btn');
+      var filterTexts = [t.filterAll, t.filterExport, t.filterImport, t.filterVehicle, t.filterCompany, t.filterEvent];
+      filterBtns.forEach(function(btn, i) {
+        if (filterTexts[i]) btn.textContent = filterTexts[i];
+      });
+
+      // Load more button
+      var loadMoreBtn = document.querySelector('.news-load-more .btn');
+      if (loadMoreBtn) loadMoreBtn.textContent = t.loadMore;
+
+      // CTA
+      var ctaH2 = document.querySelector('.cta-section h2');
+      if (ctaH2) ctaH2.textContent = t.ctaTitle;
+      var ctaP = document.querySelector('.cta-section p');
+      if (ctaP) ctaP.textContent = t.ctaDesc;
+      var ctaBtns = document.querySelectorAll('.cta-btns .btn');
+      if (ctaBtns[0]) ctaBtns[0].textContent = t.ctaBtn1;
+      if (ctaBtns[1]) ctaBtns[1].textContent = t.ctaBtn2;
+    };
+  </script>
+</body>
+</html>

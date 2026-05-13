@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>关于我们 | 杨凌国合跨境贸易有限公司</title>
+  <meta name="description" content="杨凌国合跨境贸易有限公司是杨凌现代农业国际合作集团全资子公司，依托杨凌自贸片区、上合组织农业基地、杨凌综合保税区三大国家级平台，专注跨境农产品进出口贸易。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ---- About page specific styles ---- */
+    .about-intro-section { background: var(--bg-cream); }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .intro-img {
+      position: relative;
+      border-radius: 16px;
+      overflow: visible;
+    }
+
+    .intro-img-box {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary-light));
+      border-radius: 16px;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 7rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .intro-img-box::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.3));
+    }
+
+    .intro-badge {
+      position: absolute;
+      bottom: -24px;
+      right: -24px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 12px;
+      padding: 20px 28px;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(200,168,78,0.4);
+    }
+
+    .intro-badge .num {
+      display: block;
+      font-family: 'Noto Serif SC', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .intro-badge .lbl {
+      display: block;
+      font-size: 0.8rem;
+      margin-top: 4px;
+      opacity: 0.9;
+    }
+
+    .intro-text h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .intro-text p {
+      color: var(--text-body);
+      line-height: 1.9;
+      margin-bottom: 16px;
+    }
+
+    /* ---- Platforms ---- */
+    .platforms-section { background: var(--bg-white); }
+
+    .platforms-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .platform-card {
+      border-radius: 16px;
+      padding: 40px 32px;
+      text-align: center;
+      border: 1px solid var(--border);
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .platform-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transition: transform var(--transition);
+      transform-origin: left;
+    }
+
+    .platform-card:hover {
+      box-shadow: var(--shadow-lg);
+      border-color: transparent;
+      transform: translateY(-6px);
+    }
+
+    .platform-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .platform-icon {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+    }
+
+    .platform-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+
+    .platform-card .sub {
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .platform-card p {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    /* ---- Milestones ---- */
+    .milestones-section { background: var(--bg-cream); }
+
+    .timeline {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 1fr 60px 1fr;
+      gap: 0;
+      margin-bottom: 48px;
+      align-items: start;
+    }
+
+    .timeline-item:nth-child(odd) .t-content {
+      grid-column: 1;
+      text-align: right;
+      padding-right: 40px;
+    }
+
+    .timeline-item:nth-child(odd) .t-empty {
+      grid-column: 3;
+    }
+
+    .timeline-item:nth-child(even) .t-content {
+      grid-column: 3;
+      text-align: left;
+      padding-left: 40px;
+    }
+
+    .timeline-item:nth-child(even) .t-empty {
+      grid-column: 1;
+    }
+
+    .t-dot {
+      grid-column: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .t-dot-circle {
+      width: 16px;
+      height: 16px;
+      background: var(--primary);
+      border-radius: 50%;
+      border: 3px solid var(--bg-cream);
+      box-shadow: 0 0 0 3px var(--primary);
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+
+    .t-year {
+      font-size: 0.75rem;
+      color: var(--accent);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .t-content h4 {
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+      color: var(--text-dark);
+    }
+
+    .t-content p {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    /* ---- Parent company ---- */
+    .parent-section { background: var(--primary-dark); color: #fff; }
+
+    .parent-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .parent-info h2 { color: #fff; font-size: 1.8rem; margin-bottom: 16px; }
+    .parent-info .en { font-size: 0.8rem; color: var(--accent); letter-spacing: 2px; margin-bottom: 16px; display: block; }
+    .parent-info p { color: rgba(255,255,255,0.75); line-height: 1.9; font-size: 0.95rem; margin-bottom: 12px; }
+
+    .parent-subsidiaries h4 { color: #fff; font-size: 1.1rem; margin-bottom: 20px; }
+
+    .subsidiary-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .subsidiary-item {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 16px 20px;
+      transition: all var(--transition);
+    }
+
+    .subsidiary-item:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: var(--accent);
+    }
+
+    .subsidiary-item .s-name {
+      font-size: 0.95rem;
+      color: #fff;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .subsidiary-item .s-desc {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* ---- Qualifications ---- */
+    .qual-section { background: var(--bg-white); }
+
+    .qual-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .qual-card {
+      background: var(--bg-cream);
+      border-radius: 12px;
+      padding: 32px 20px;
+      text-align: center;
+      border: 1px solid var(--border);
+      transition: all var(--transition);
+    }
+
+    .qual-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: var(--accent);
+    }
+
+    .qual-card .q-icon { font-size: 2.5rem; margin-bottom: 16px; }
+    .qual-card h4 { font-size: 0.95rem; margin-bottom: 8px; color: var(--text-dark); }
+    .qual-card p { font-size: 0.8rem; color: var(--text-light); line-height: 1.6; }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 1024px) {
+      .intro-grid, .parent-grid { grid-template-columns: 1fr; gap: 48px; }
+      .platforms-grid { grid-template-columns: 1fr; gap: 20px; }
+      .qual-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .timeline::before { left: 24px; }
+      .timeline-item { grid-template-columns: 48px 1fr; }
+      .timeline-item:nth-child(odd) .t-content,
+      .timeline-item:nth-child(even) .t-content {
+        grid-column: 2;
+        text-align: left;
+        padding: 0 0 0 16px;
+      }
+      .timeline-item:nth-child(odd) .t-empty,
+      .timeline-item:nth-child(even) .t-empty { display: none; }
+      .t-dot { grid-column: 1; }
+      .intro-badge { bottom: -16px; right: -8px; }
+      .qual-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="mobile-overlay"></div>
+
+  <!-- Header -->
+  <header class="header scrolled">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">国合</div>
+        <div class="logo-text">
+          <span class="cn">杨凌国合跨境贸易</span>
+          <span class="en">Yangling Guohe Cross-border Trade</span>
+        </div>
+      </a>
+      <div class="menu-toggle"><span></span><span></span><span></span></div>
+      <nav class="nav">
+        <a href="index.html">首页</a>
+        <a href="about.html" class="active">关于我们</a>
+        <a href="products.html">产品中心</a>
+        <a href="global.html">全球布局</a>
+        <a href="news.html">新闻中心</a>
+        <a href="contact.html">联系我们</a>
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="zh">中文</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="ru">РУ</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Banner -->
+  <section class="page-banner">
+    <div>
+      <h1>关于我们</h1>
+      <div class="breadcrumb"><a href="index.html">首页</a> / 关于我们</div>
+    </div>
+  </section>
+
+  <!-- Company Introduction -->
+  <section class="section about-intro-section">
+    <div class="container">
+      <div class="intro-grid">
+        <div class="intro-img fade-in-left">
+          <div class="intro-img-box">🏢</div>
+          <div class="intro-badge">
+            <span class="num">5.79<small style="font-size:1.2rem">亿</small></span>
+            <span class="lbl">2025年进出口贸易额</span>
+          </div>
+        </div>
+        <div class="intro-text fade-in-right">
+          <span class="en-name" style="font-size:0.8rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px;display:block;">ABOUT YANGLING GUOHE</span>
+          <h2>杨凌国合跨境贸易有限公司</h2>
+          <p>
+            杨凌国合跨境贸易有限公司是杨凌现代农业国际合作集团有限公司的全资子公司，注册成立于陕西省杨凌示范区·杨凌综合保税区。公司坚持"以农为本、以贸兴农"的发展理念，依托杨凌自贸片区、上合组织农业交流培训示范基地及杨凌综合保税区三大国家级平台优势，专注于跨境农产品进出口贸易。
+          </p>
+          <p>
+            2025年，公司实现进出口贸易额5.79亿元，同比增长1,118%，其中出口额1.37亿元，同比增长23,841%。公司业务涵盖水果、蔬菜、食品原料、干果等农产品出口，以及大麦、牛油果、榴莲、巧克力原料等进口，同时拥有杨凌示范区唯一的二手车出口资质，已累计出口二手车522台。
+          </p>
+          <p>
+            公司秉承开放合作、互利共赢的经营原则，业务覆盖20余个国家和地区，已在俄罗斯莫斯科、白俄罗斯明斯克、阿联酋迪拜建立海外仓储中心，总面积超8,000平方米，构建起覆盖铁运、海运、空运、公路的四维国际物流网络。
+          </p>
+          <div class="about-tags" style="margin-top:24px;margin-bottom:32px;">
+            <span class="tag">杨凌自贸片区</span>
+            <span class="tag">上合组织农业基地</span>
+            <span class="tag">综合保税区</span>
+            <span class="tag">区港联动</span>
+            <span class="tag">二手车出口资质</span>
+            <span class="tag">中欧班列</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Three Key Platforms -->
+  <section class="section platforms-section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div class="en-title">Key Platforms</div>
+        <h2>三大国家级平台</h2>
+      </div>
+      <div class="platforms-grid">
+        <div class="platform-card fade-in" data-delay="0">
+          <div class="platform-icon">🏛️</div>
+          <h3>杨凌自由贸易试验区片区</h3>
+          <span class="sub">FREE TRADE ZONE</span>
+          <p>依托陕西自贸试验区杨凌片区政策优势，享受通关便利、税收优惠、监管创新等多项改革红利，大幅降低跨境贸易成本，提升清关效率与贸易便利化水平。</p>
+        </div>
+        <div class="platform-card fade-in" data-delay="150">
+          <div class="platform-icon">🤝</div>
+          <h3>上合组织农业交流培训示范基地</h3>
+          <span class="sub">SCO AGRICULTURE BASE</span>
+          <p>作为上合组织框架内重要的农业合作平台，依托该基地与中亚、东欧等上合成员国建立深度农业贸易合作关系，推动中国优质农产品走向国际市场，实现互利共赢。</p>
+        </div>
+        <div class="platform-card fade-in" data-delay="300">
+          <div class="platform-icon">🏗️</div>
+          <h3>杨凌综合保税区</h3>
+          <span class="sub">COMPREHENSIVE BONDED ZONE</span>
+          <p>依托综合保税区保税仓储、加工制造、口岸作业等功能，实现"区港联动"高效运作，为公司跨境农产品进出口提供低成本、高效率的仓储与通关服务支撑。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Development Milestones -->
+  <section class="section milestones-section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div class="en-title">Development Milestones</div>
+        <h2>发展历程</h2>
+      </div>
+      <div class="timeline" id="timeline-container">
+        <!-- 动态渲染时间线 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Parent Company -->
+  <section class="section parent-section">
+    <div class="container">
+      <div class="parent-grid">
+        <div class="parent-info fade-in-left">
+          <span class="en">PARENT COMPANY</span>
+          <h2>杨凌现代农业国际合作集团有限公司</h2>
+          <p>
+            杨凌现代农业国际合作集团有限公司（简称"杨凌国合集团"）是杨凌示范区重点扶持的国际农业合作综合性企业集团，以推动杨凌农业科技走向世界为核心使命。
+          </p>
+          <p>
+            集团深度融合杨凌自贸片区、上合组织农业基地、综合保税区三大国家级平台资源，构建起涵盖农产品进出口贸易、国际物流、跨境电商、农业技术输出的一体化产业体系，2025年集团总贸易额达7.59亿元。
+          </p>
+        </div>
+        <div class="parent-subsidiaries fade-in-right">
+          <h4>旗下核心子公司</h4>
+          <div class="subsidiary-list">
+            <div class="subsidiary-item">
+              <div class="s-name">杨凌国合跨境贸易有限公司</div>
+              <div class="s-desc">跨境农产品进出口贸易 · 二手车出口 · 2025年进出口额5.79亿元</div>
+            </div>
+            <div class="subsidiary-item">
+              <div class="s-name">杨凌国合跨境物流有限公司</div>
+              <div class="s-desc">国际多式联运 · 杨凌示范区唯一纳统物流企业 · 2025年营运收入6,000万元</div>
+            </div>
+            <div class="subsidiary-item">
+              <div class="s-name">杨凌国合跨境电商有限公司</div>
+              <div class="s-desc">跨境电商平台运营 · B2B/B2C国际贸易数字化服务</div>
+            </div>
+            <div class="subsidiary-item">
+              <div class="s-name">杨凌农业技术国际推广中心</div>
+              <div class="s-desc">农业技术输出 · 上合组织农业培训 · 示范推广</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Qualifications -->
+  <section class="section qual-section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div class="en-title">Qualifications &amp; Certificates</div>
+        <h2>资质荣誉</h2>
+      </div>
+      <div class="qual-grid" id="qual-grid">
+        <!-- 动态渲染资质 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container fade-in">
+      <h2>携手共拓全球农产品市场</h2>
+      <p>无论您是寻找优质中国农产品的海外采购商，还是希望进入中国市场的国际供应商，我们期待与您建立长期合作关系。</p>
+      <div class="cta-btns">
+        <a href="contact.html" class="btn btn-primary">联系我们</a>
+        <a href="products.html" class="btn btn-outline">查看产品</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <div class="logo-icon" style="background: var(--primary);">国合</div>
+            <div class="logo-text">
+              <span class="cn">杨凌国合跨境贸易</span>
+              <span class="en">Yangling Guohe Cross-border Trade</span>
+            </div>
+          </div>
+          <p>杨凌现代农业国际合作集团有限公司全资子公司，专注于跨境农产品进出口贸易，依托杨凌自贸片区与上合组织农业基地，连接中国与世界。</p>
+          <div class="footer-social">
+            <a href="#" title="微信">微</a>
+            <a href="#" title="微博">博</a>
+            <a href="#" title="抖音">抖</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>快速导航</h4>
+          <ul>
+            <li><a href="about.html">关于我们</a></li>
+            <li><a href="products.html">产品中心</a></li>
+            <li><a href="global.html">全球布局</a></li>
+            <li><a href="news.html">新闻中心</a></li>
+            <li><a href="contact.html">联系我们</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>核心产品</h4>
+          <ul>
+            <li><a href="products.html">猕猴桃</a></li>
+            <li><a href="products.html">阳光玫瑰葡萄</a></li>
+            <li><a href="products.html">蓝莓</a></li>
+            <li><a href="products.html">苹果</a></li>
+            <li><a href="products.html">酥梨 / 冬枣</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>联系方式</h4>
+          <ul class="footer-contact">
+            <li><span class="icon">📍</span><span>陕西省杨凌示范区·杨凌综合保税区</span></li>
+            <li><span class="icon">📧</span><span>info@ylguohe.com</span></li>
+            <li><span class="icon">📞</span><span>029-8703-9533</span></li>
+            <li><span class="icon">🕐</span><span>周一至周五 9:00 - 18:00</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2025 杨凌国合跨境贸易有限公司 版权所有</span>
+        <span><a href="#">隐私政策</a> &nbsp;|&nbsp; <a href="#">使用条款</a> &nbsp;|&nbsp; <a href="#">陕ICP备XXXXXXXX号</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="回到顶部">↑</button>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/about-page.js"></script>
+  <script src="js/i18n.js"></script>
+  <script>
+    window.PAGE_TRANSLATIONS = {
+      zh: {
+        bannerTitle: '关于我们',
+        bannerBreadcrumb: '关于我们',
+        bannerBreadcrumbHome: '首页',
+        introEnName: 'ABOUT YANGLING GUOHE',
+        introTitle: '杨凌国合跨境贸易有限公司',
+        introP1: '杨凌国合跨境贸易有限公司是杨凌现代农业国际合作集团有限公司的全资子公司，注册成立于陕西省杨凌示范区·杨凌综合保税区。公司坚持"以农为本、以贸兴农"的发展理念，依托杨凌自贸片区、上合组织农业交流培训示范基地及杨凌综合保税区三大国家级平台优势，专注于跨境农产品进出口贸易。',
+        introP2: '2025年，公司实现进出口贸易额5.79亿元，同比增长1,118%，其中出口额1.37亿元，同比增长23,841%。公司业务涵盖水果、蔬菜、食品原料、干果等农产品出口，以及大麦、牛油果、榴莲、巧克力原料等进口，同时拥有杨凌示范区唯一的二手车出口资质，已累计出口二手车522台。',
+        introP3: '公司秉承开放合作、互利共赢的经营原则，业务覆盖20余个国家和地区，已在俄罗斯莫斯科、白俄罗斯明斯克、阿联酋迪拜建立海外仓储中心，总面积超8,000平方米，构建起覆盖铁运、海运、空运、公路的四维国际物流网络。',
+        badgeNum: '5.79',
+        badgeUnit: '亿',
+        badgeLbl: '2025年进出口贸易额',
+        tags: ['杨凌自贸片区', '上合组织农业基地', '综合保税区', '区港联动', '二手车出口资质', '中欧班列'],
+        platformEnTitle: 'Key Platforms',
+        platformTitle: '三大国家级平台',
+        platform1Title: '杨凌自由贸易试验区片区',
+        platform1Sub: 'FREE TRADE ZONE',
+        platform1Desc: '依托陕西自贸试验区杨凌片区政策优势，享受通关便利、税收优惠、监管创新等多项改革红利，大幅降低跨境贸易成本，提升清关效率与贸易便利化水平。',
+        platform2Title: '上合组织农业交流培训示范基地',
+        platform2Sub: 'SCO AGRICULTURE BASE',
+        platform2Desc: '作为上合组织框架内重要的农业合作平台，依托该基地与中亚、东欧等上合成员国建立深度农业贸易合作关系，推动中国优质农产品走向国际市场，实现互利共赢。',
+        platform3Title: '杨凌综合保税区',
+        platform3Sub: 'COMPREHENSIVE BONDED ZONE',
+        platform3Desc: '依托综合保税区保税仓储、加工制造、口岸作业等功能，实现"区港联动"高效运作，为公司跨境农产品进出口提供低成本、高效率的仓储与通关服务支撑。',
+        milestoneEnTitle: 'Development Milestones',
+        milestoneTitle: '发展历程',
+        parentEn: 'PARENT COMPANY',
+        parentTitle: '杨凌现代农业国际合作集团有限公司',
+        parentP1: '杨凌现代农业国际合作集团有限公司（简称"杨凌国合集团"）是杨凌示范区重点扶持的国际农业合作综合性企业集团，以推动杨凌农业科技走向世界为核心使命。',
+        parentP2: '集团深度融合杨凌自贸片区、上合组织农业基地、综合保税区三大国家级平台资源，构建起涵盖农产品进出口贸易、国际物流、跨境电商、农业技术输出的一体化产业体系，2025年集团总贸易额达7.59亿元。',
+        parentSubsTitle: '旗下核心子公司',
+        sub1Name: '杨凌国合跨境贸易有限公司',
+        sub1Desc: '跨境农产品进出口贸易 · 二手车出口 · 2025年进出口额5.79亿元',
+        sub2Name: '杨凌国合跨境物流有限公司',
+        sub2Desc: '国际多式联运 · 杨凌示范区唯一纳统物流企业 · 2025年营运收入6,000万元',
+        sub3Name: '杨凌国合跨境电商有限公司',
+        sub3Desc: '跨境电商平台运营 · B2B/B2C国际贸易数字化服务',
+        sub4Name: '杨凌农业技术国际推广中心',
+        sub4Desc: '农业技术输出 · 上合组织农业培训 · 示范推广',
+        qualEnTitle: 'Qualifications & Certificates',
+        qualTitle: '资质荣誉',
+        ctaTitle: '携手共拓全球农产品市场',
+        ctaDesc: '无论您是寻找优质中国农产品的海外采购商，还是希望进入中国市场的国际供应商，我们期待与您建立长期合作关系。',
+        ctaBtn1: '联系我们',
+        ctaBtn2: '查看产品'
+      },
+      en: {
+        bannerTitle: 'About Us',
+        bannerBreadcrumb: 'About Us',
+        bannerBreadcrumbHome: 'Home',
+        introEnName: 'ABOUT YANGLING GUOHE',
+        introTitle: 'Yangling Guohe Cross-border Trade Co., Ltd.',
+        introP1: 'Yangling Guohe Cross-border Trade Co., Ltd. is a wholly-owned subsidiary of Yangling Modern Agriculture International Cooperation Group Co., Ltd., registered in the Yangling Comprehensive Bonded Zone, Yangling Demonstration Zone, Shaanxi Province. Guided by the philosophy of "Agriculture-based, Trade-driven", the company leverages three national-level platforms — the Yangling Free Trade Zone, the SCO Agricultural Exchange and Training Demonstration Base, and the Yangling Comprehensive Bonded Zone — to focus on cross-border agricultural product import and export trade.',
+        introP2: 'In 2025, the company achieved a total import and export trade volume of RMB 579 million, a year-on-year increase of 1,118%, with exports reaching RMB 137 million, a year-on-year increase of 23,841%. Our business covers the export of fruits, vegetables, food ingredients, and dried fruits, as well as the import of barley, avocado, durian, and chocolate ingredients. We also hold the sole used vehicle export qualification in the Yangling Demonstration Zone, having exported 522 used vehicles to date.',
+        introP3: 'Upholding the principles of open cooperation and mutual benefit, our business covers more than 20 countries and regions. We have established overseas warehousing centers in Moscow (Russia), Minsk (Belarus), and Dubai (UAE), with a total area exceeding 8,000 square meters, building a four-dimensional international logistics network covering rail, sea, air, and road transport.',
+        badgeNum: '579',
+        badgeUnit: 'M',
+        badgeLbl: '2025 Import & Export Volume (RMB)',
+        tags: ['Yangling FTZ', 'SCO Agriculture Base', 'Bonded Zone', 'Zone-Port Linkage', 'Used Vehicle Export', 'China-Europe Railway Express'],
+        platformEnTitle: 'Key Platforms',
+        platformTitle: 'Three National-Level Platforms',
+        platform1Title: 'Yangling Free Trade Zone',
+        platform1Sub: 'FREE TRADE ZONE',
+        platform1Desc: 'Leveraging the policy advantages of the Yangling area of the China (Shaanxi) Pilot Free Trade Zone, we enjoy customs facilitation, tax incentives, and regulatory innovation, significantly reducing cross-border trade costs and improving clearance efficiency.',
+        platform2Title: 'SCO Agricultural Exchange & Training Base',
+        platform2Sub: 'SCO AGRICULTURE BASE',
+        platform2Desc: 'As a key agricultural cooperation platform within the SCO framework, we build deep agricultural trade partnerships with Central Asian and Eastern European SCO member states, promoting premium Chinese agricultural products to international markets.',
+        platform3Title: 'Yangling Comprehensive Bonded Zone',
+        platform3Sub: 'COMPREHENSIVE BONDED ZONE',
+        platform3Desc: 'Utilizing the bonded warehousing, processing, and port operation functions of the Comprehensive Bonded Zone, we achieve efficient "Zone-Port Linkage" operations, providing cost-effective warehousing and customs clearance support for cross-border agricultural trade.',
+        milestoneEnTitle: 'Development Milestones',
+        milestoneTitle: 'Development History',
+        parentEn: 'PARENT COMPANY',
+        parentTitle: 'Yangling Modern Agriculture International Cooperation Group',
+        parentP1: 'Yangling Modern Agriculture International Cooperation Group (hereinafter "Yangling Guohe Group") is a key international agricultural cooperation enterprise supported by the Yangling Demonstration Zone, with the core mission of bringing Yangling\'s agricultural technology to the world.',
+        parentP2: 'The Group deeply integrates the resources of three national-level platforms — the Yangling FTZ, the SCO Agriculture Base, and the Comprehensive Bonded Zone — to build an integrated industrial system covering agricultural import & export trade, international logistics, cross-border e-commerce, and agricultural technology transfer. In 2025, the Group\'s total trade volume reached RMB 759 million.',
+        parentSubsTitle: 'Core Subsidiaries',
+        sub1Name: 'Yangling Guohe Cross-border Trade Co., Ltd.',
+        sub1Desc: 'Cross-border agricultural trade · Used vehicle export · 2025 trade volume RMB 579M',
+        sub2Name: 'Yangling Guohe Cross-border Logistics Co., Ltd.',
+        sub2Desc: 'International multimodal transport · Sole registered logistics enterprise in Yangling · 2025 revenue RMB 60M',
+        sub3Name: 'Yangling Guohe Cross-border E-commerce Co., Ltd.',
+        sub3Desc: 'Cross-border e-commerce platform · B2B/B2C digital trade services',
+        sub4Name: 'Yangling International Agricultural Technology Promotion Center',
+        sub4Desc: 'Agricultural technology transfer · SCO agricultural training · Demonstration & promotion',
+        qualEnTitle: 'Qualifications & Certificates',
+        qualTitle: 'Qualifications & Honors',
+        ctaTitle: 'Partner with Us to Explore Global Agricultural Markets',
+        ctaDesc: 'Whether you are an overseas buyer seeking premium Chinese agricultural products or an international supplier looking to enter the Chinese market, we look forward to establishing a long-term partnership with you.',
+        ctaBtn1: 'Contact Us',
+        ctaBtn2: 'View Products'
+      },
+      ru: {
+        bannerTitle: 'О компании',
+        bannerBreadcrumb: 'О компании',
+        bannerBreadcrumbHome: 'Главная',
+        introEnName: 'О КОМПАНИИ YANGLING GUOHE',
+        introTitle: 'Yangling Guohe Cross-border Trade Co., Ltd.',
+        introP1: 'Yangling Guohe Cross-border Trade Co., Ltd. — дочерняя компания Yangling Modern Agriculture International Cooperation Group Co., Ltd., зарегистрированная в Комплексной бондовой зоне Янлин, Демонстрационная зона Янлин, провинция Шэньси. Руководствуясь принципом «Сельское хозяйство — основа, торговля — двигатель», компания опирается на три национальные платформы — Зону свободной торговли Янлин, Демонстрационную базу сельскохозяйственного обмена и обучения ШОС и Комплексную бондовую зону Янлин — для ведения трансграничной торговли сельхозпродукцией.',
+        introP2: 'В 2025 году объём импортно-экспортной торговли компании составил 579 млн юаней (рост на 1 118% в годовом исчислении), из которых экспорт — 137 млн юаней (рост на 23 841%). Бизнес включает экспорт фруктов, овощей, пищевого сырья и сухофруктов, а также импорт ячменя, авокадо, дуриана и какао-сырья. Компания является единственным предприятием в Демонстрационной зоне Янлин с лицензией на экспорт подержанных автомобилей — уже экспортировано 522 единицы.',
+        introP3: 'Придерживаясь принципов открытого сотрудничества и взаимной выгоды, компания работает более чем в 20 странах и регионах. Созданы зарубежные складские центры в Москве (Россия), Минске (Беларусь) и Дубае (ОАЭ) общей площадью более 8 000 м², формируя четырёхмерную международную логистическую сеть (ж/д, море, авиа, автотранспорт).',
+        badgeNum: '579',
+        badgeUnit: 'млн',
+        badgeLbl: 'Объём торговли 2025 (юаней)',
+        tags: ['Зона свободной торговли', 'База ШОС', 'Бондовая зона', 'Зона-порт', 'Экспорт авто', 'Китай-Европа ж/д'],
+        platformEnTitle: 'Key Platforms',
+        platformTitle: 'Три национальные платформы',
+        platform1Title: 'Зона свободной торговли Янлин',
+        platform1Sub: 'FREE TRADE ZONE',
+        platform1Desc: 'Используя преимущества политики зоны свободной торговли Янлин, мы получаем таможенные льготы, налоговые преференции и регуляторные инновации, значительно снижая издержки трансграничной торговли.',
+        platform2Title: 'Демонстрационная база сельхозобмена ШОС',
+        platform2Sub: 'SCO AGRICULTURE BASE',
+        platform2Desc: 'Как ключевая платформа сельскохозяйственного сотрудничества в рамках ШОС, мы выстраиваем глубокие торговые связи со странами Центральной Азии и Восточной Европы, продвигая качественную китайскую сельхозпродукцию на международные рынки.',
+        platform3Title: 'Комплексная бондовая зона Янлин',
+        platform3Sub: 'COMPREHENSIVE BONDED ZONE',
+        platform3Desc: 'Используя функции бондового хранения, переработки и портовых операций, мы обеспечиваем эффективную связку «Зона-Порт», предоставляя экономичные складские и таможенные услуги для трансграничной торговли сельхозпродукцией.',
+        milestoneEnTitle: 'Development Milestones',
+        milestoneTitle: 'История развития',
+        parentEn: 'PARENT COMPANY',
+        parentTitle: 'Yangling Modern Agriculture International Cooperation Group',
+        parentP1: 'Yangling Modern Agriculture International Cooperation Group (сокращённо «Yangling Guohe Group») — ключевое предприятие международного сельскохозяйственного сотрудничества, поддерживаемое Демонстрационной зоной Янлин, с миссией продвижения аграрных технологий Янлин в мире.',
+        parentP2: 'Группа глубоко интегрирует ресурсы трёх национальных платформ — ЗСТ Янлин, Базы ШОС и Бондовой зоны — формируя единую промышленную систему, включающую импорт-экспорт сельхозпродукции, международную логистику, трансграничную электронную коммерцию и трансфер сельхозтехнологий. В 2025 году общий товарооборот Группы составил 759 млн юаней.',
+        parentSubsTitle: 'Основные дочерние компании',
+        sub1Name: 'Yangling Guohe Cross-border Trade Co., Ltd.',
+        sub1Desc: 'Трансграничная торговля сельхозпродукцией · Экспорт б/у авто · Товарооборот 2025: 579 млн юаней',
+        sub2Name: 'Yangling Guohe Cross-border Logistics Co., Ltd.',
+        sub2Desc: 'Международные мультимодальные перевозки · Единственное зарегистрированное логистическое предприятие в Янлин · Выручка 2025: 60 млн юаней',
+        sub3Name: 'Yangling Guohe Cross-border E-commerce Co., Ltd.',
+        sub3Desc: 'Платформа трансграничной электронной коммерции · Цифровые услуги B2B/B2C',
+        sub4Name: 'Янлинский центр международного продвижения агротехнологий',
+        sub4Desc: 'Трансфер агротехнологий · Обучение в рамках ШОС · Демонстрация и продвижение',
+        qualEnTitle: 'Qualifications & Certificates',
+        qualTitle: 'Квалификации и награды',
+        ctaTitle: 'Вместе к глобальному рынку сельхозпродукции',
+        ctaDesc: 'Независимо от того, являетесь ли вы зарубежным закупщиком качественной китайской сельхозпродукции или международным поставщиком, стремящимся выйти на рынок Китая, мы рады установить с вами долгосрочное партнёрство.',
+        ctaBtn1: 'Связаться с нами',
+        ctaBtn2: 'Смотреть продукцию'
+      }
+    };
+
+    window.applyPageLang = function(t, lang) {
+      // Banner
+      var bannerH1 = document.querySelector('.page-banner h1');
+      if (bannerH1) bannerH1.textContent = t.bannerTitle;
+      var breadcrumb = document.querySelector('.page-banner .breadcrumb');
+      if (breadcrumb) breadcrumb.innerHTML = '<a href="index.html">' + t.bannerBreadcrumbHome + '</a> / ' + t.bannerBreadcrumb;
+
+      // Intro section
+      var enName = document.querySelector('.intro-text .en-name');
+      if (enName) enName.textContent = t.introEnName;
+      var introH2 = document.querySelector('.intro-text h2');
+      if (introH2) introH2.textContent = t.introTitle;
+      var introPs = document.querySelectorAll('.intro-text > p');
+      if (introPs[0]) introPs[0].textContent = t.introP1;
+      if (introPs[1]) introPs[1].textContent = t.introP2;
+      if (introPs[2]) introPs[2].textContent = t.introP3;
+
+      // Badge
+      var badgeNum = document.querySelector('.intro-badge .num');
+      if (badgeNum) badgeNum.innerHTML = t.badgeNum + '<small style="font-size:1.2rem">' + t.badgeUnit + '</small>';
+      var badgeLbl = document.querySelector('.intro-badge .lbl');
+      if (badgeLbl) badgeLbl.textContent = t.badgeLbl;
+
+      // Tags
+      var tagEls = document.querySelectorAll('.about-tags .tag');
+      tagEls.forEach(function(el, i) {
+        if (t.tags[i]) el.textContent = t.tags[i];
+      });
+
+      // Platforms section
+      var platHeader = document.querySelector('.platforms-section .section-header');
+      if (platHeader) {
+        var enT = platHeader.querySelector('.en-title');
+        if (enT) enT.textContent = t.platformEnTitle;
+        var h2 = platHeader.querySelector('h2');
+        if (h2) h2.textContent = t.platformTitle;
+      }
+      var cards = document.querySelectorAll('.platform-card');
+      if (cards[0]) {
+        cards[0].querySelector('h3').textContent = t.platform1Title;
+        cards[0].querySelector('.sub').textContent = t.platform1Sub;
+        cards[0].querySelector('p').textContent = t.platform1Desc;
+      }
+      if (cards[1]) {
+        cards[1].querySelector('h3').textContent = t.platform2Title;
+        cards[1].querySelector('.sub').textContent = t.platform2Sub;
+        cards[1].querySelector('p').textContent = t.platform2Desc;
+      }
+      if (cards[2]) {
+        cards[2].querySelector('h3').textContent = t.platform3Title;
+        cards[2].querySelector('.sub').textContent = t.platform3Sub;
+        cards[2].querySelector('p').textContent = t.platform3Desc;
+      }
+
+      // Milestones section header
+      var msHeader = document.querySelector('.milestones-section .section-header');
+      if (msHeader) {
+        var enT = msHeader.querySelector('.en-title');
+        if (enT) enT.textContent = t.milestoneEnTitle;
+        var h2 = msHeader.querySelector('h2');
+        if (h2) h2.textContent = t.milestoneTitle;
+      }
+
+      // Parent company
+      var parentInfo = document.querySelector('.parent-info');
+      if (parentInfo) {
+        var en = parentInfo.querySelector('.en');
+        if (en) en.textContent = t.parentEn;
+        var h2 = parentInfo.querySelector('h2');
+        if (h2) h2.textContent = t.parentTitle;
+        var ps = parentInfo.querySelectorAll('p');
+        if (ps[0]) ps[0].textContent = t.parentP1;
+        if (ps[1]) ps[1].textContent = t.parentP2;
+      }
+
+      var subsH4 = document.querySelector('.parent-subsidiaries h4');
+      if (subsH4) subsH4.textContent = t.parentSubsTitle;
+
+      var subItems = document.querySelectorAll('.subsidiary-item');
+      if (subItems[0]) {
+        subItems[0].querySelector('.s-name').textContent = t.sub1Name;
+        subItems[0].querySelector('.s-desc').textContent = t.sub1Desc;
+      }
+      if (subItems[1]) {
+        subItems[1].querySelector('.s-name').textContent = t.sub2Name;
+        subItems[1].querySelector('.s-desc').textContent = t.sub2Desc;
+      }
+      if (subItems[2]) {
+        subItems[2].querySelector('.s-name').textContent = t.sub3Name;
+        subItems[2].querySelector('.s-desc').textContent = t.sub3Desc;
+      }
+      if (subItems[3]) {
+        subItems[3].querySelector('.s-name').textContent = t.sub4Name;
+        subItems[3].querySelector('.s-desc').textContent = t.sub4Desc;
+      }
+
+      // Qualifications section header
+      var qualHeader = document.querySelector('.qual-section .section-header');
+      if (qualHeader) {
+        var enT = qualHeader.querySelector('.en-title');
+        if (enT) enT.textContent = t.qualEnTitle;
+        var h2 = qualHeader.querySelector('h2');
+        if (h2) h2.textContent = t.qualTitle;
+      }
+
+      // CTA
+      var ctaH2 = document.querySelector('.cta-section h2');
+      if (ctaH2) ctaH2.textContent = t.ctaTitle;
+      var ctaP = document.querySelector('.cta-section p');
+      if (ctaP) ctaP.textContent = t.ctaDesc;
+      var ctaBtns = document.querySelectorAll('.cta-btns .btn');
+      if (ctaBtns[0]) ctaBtns[0].textContent = t.ctaBtn1;
+      if (ctaBtns[1]) ctaBtns[1].textContent = t.ctaBtn2;
+    };
+  </script>
+</body>
+</html>

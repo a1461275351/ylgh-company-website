@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>产品中心 | 杨凌国合跨境贸易有限公司</title>
+  <meta name="description" content="杨凌国合跨境贸易产品中心：出口猕猴桃、阳光玫瑰葡萄、蓝莓、苹果等优质农产品；进口大麦、牛油果、榴莲等特色商品；以及二手车出口业务。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ---- Products page ---- */
+    .products-page-section { background: var(--bg-white); }
+
+    .category-nav {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 60px;
+      flex-wrap: wrap;
+    }
+
+    .cat-btn {
+      padding: 12px 32px;
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      background: transparent;
+      color: var(--text-body);
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all var(--transition);
+      font-family: 'Noto Sans SC', sans-serif;
+      font-weight: 500;
+    }
+
+    .cat-btn.active, .cat-btn:hover {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    /* Product detail grid */
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .detail-card {
+      background: var(--bg-cream);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: all var(--transition);
+    }
+
+    .detail-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: transparent;
+    }
+
+    .detail-card .d-img {
+      aspect-ratio: 16/10;
+      background: linear-gradient(135deg, #f0ece4, #e4e0d4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4.5rem;
+      position: relative;
+    }
+
+    .detail-card .d-img .d-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--primary);
+      color: #fff;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+    }
+
+    .detail-card .d-body {
+      padding: 24px;
+    }
+
+    .detail-card .d-body h3 {
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+    }
+
+    .detail-card .d-body .d-origin {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-bottom: 14px;
+    }
+
+    .detail-card .d-body .d-origin::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .detail-card .d-body p {
+      font-size: 0.875rem;
+      color: var(--text-body);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .detail-card .d-specs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .detail-card .d-spec-tag {
+      padding: 4px 12px;
+      background: rgba(26,94,58,0.08);
+      color: var(--primary);
+      border-radius: 12px;
+      font-size: 0.75rem;
+    }
+
+    /* Vehicle section */
+    .vehicle-section { background: var(--bg-cream); }
+
+    .vehicle-hero {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 64px;
+      align-items: center;
+      margin-bottom: 64px;
+    }
+
+    .vehicle-info h2 { font-size: 1.8rem; margin-bottom: 16px; }
+    .vehicle-info p { color: var(--text-body); line-height: 1.9; margin-bottom: 12px; }
+
+    .vehicle-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .v-stat {
+      background: var(--bg-white);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      border: 1px solid var(--border);
+    }
+
+    .v-stat .v-num {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.8rem;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .v-stat .v-lbl {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-top: 4px;
+    }
+
+    .vehicle-img-box {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      border-radius: 16px;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 7rem;
+    }
+
+    .destinations-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .dest-card {
+      background: var(--bg-white);
+      border-radius: 12px;
+      padding: 24px 20px;
+      text-align: center;
+      border: 1px solid var(--border);
+      transition: all var(--transition);
+    }
+
+    .dest-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: var(--accent);
+    }
+
+    .dest-card .flag { font-size: 2.5rem; margin-bottom: 10px; }
+    .dest-card h4 { font-size: 1rem; margin-bottom: 6px; }
+    .dest-card p { font-size: 0.8rem; color: var(--text-light); }
+
+    /* category content */
+    .cat-content { display: none; }
+    .cat-content.active { display: block; }
+
+    @media (max-width: 1024px) {
+      .detail-grid { grid-template-columns: repeat(2, 1fr); }
+      .destinations-grid { grid-template-columns: repeat(2, 1fr); }
+      .vehicle-hero { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    @media (max-width: 768px) {
+      .detail-grid { grid-template-columns: 1fr; }
+      .destinations-grid { grid-template-columns: repeat(2, 1fr); }
+      .vehicle-stats { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="mobile-overlay"></div>
+
+  <header class="header scrolled">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">国合</div>
+        <div class="logo-text">
+          <span class="cn">杨凌国合跨境贸易</span>
+          <span class="en">Yangling Guohe Cross-border Trade</span>
+        </div>
+      </a>
+      <div class="menu-toggle"><span></span><span></span><span></span></div>
+      <nav class="nav">
+        <a href="index.html">首页</a>
+        <a href="about.html">关于我们</a>
+        <a href="products.html" class="active">产品中心</a>
+        <a href="global.html">全球布局</a>
+        <a href="news.html">新闻中心</a>
+        <a href="contact.html">联系我们</a>
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="zh">中文</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="ru">РУ</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-banner">
+    <div>
+      <h1>产品中心</h1>
+      <div class="breadcrumb"><a href="index.html">首页</a> / 产品中心</div>
+    </div>
+  </section>
+
+  <!-- Products Main Section -->
+  <section class="section products-page-section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div class="en-title">Our Products</div>
+        <h2>核心产品</h2>
+      </div>
+
+      <div class="category-nav fade-in">
+        <button class="cat-btn active" data-cat="export">🌿 出口农产品</button>
+        <button class="cat-btn" data-cat="import">🌍 进口商品</button>
+        <button class="cat-btn" data-cat="vehicle">🚗 二手车出口</button>
+      </div>
+
+      <!-- Export Products -->
+      <div class="cat-content active" id="cat-export">
+        <div class="detail-grid" id="export-grid">
+          <!-- 动态渲染出口产品 -->
+        </div>
+      </div>
+
+      <!-- Import Products -->
+      <div class="cat-content" id="cat-import">
+        <div class="detail-grid" id="import-grid">
+          <!-- 动态渲染进口产品 -->
+        </div>
+      </div>
+
+      <!-- Vehicle Export -->
+      <div class="cat-content" id="cat-vehicle">
+        <div style="max-width:900px;margin:0 auto;">
+          <div class="vehicle-hero">
+            <div class="vehicle-info fade-in-left">
+              <span style="display:block;font-size:0.8rem;color:var(--accent);letter-spacing:2px;margin-bottom:12px;">USED VEHICLE EXPORT</span>
+              <h2>二手车出口业务</h2>
+              <p>
+                杨凌国合跨境贸易有限公司是杨凌示范区唯一具备二手车出口资质的企业。公司依托综合保税区区位优势和便利的国际物流网络，向俄罗斯、中亚五国、白俄罗斯等地出口中国品牌二手车。
+              </p>
+              <p>
+                目前已在白俄罗斯明斯克建立4,000㎡海外展示中心，配备重型车辆装卸平台，提供全链条售后保障服务，实现从采购、检验、出口清关到海外销售的一体化服务。
+              </p>
+              <div class="vehicle-stats">
+                <div class="v-stat">
+                  <div class="v-num">522<small>台</small></div>
+                  <div class="v-lbl">累计出口台数</div>
+                </div>
+                <div class="v-stat">
+                  <div class="v-num">4,000<small>㎡</small></div>
+                  <div class="v-lbl">明斯克展示中心</div>
+                </div>
+                <div class="v-stat">
+                  <div class="v-num">唯一</div>
+                  <div class="v-lbl">杨凌示范区出口资质</div>
+                </div>
+                <div class="v-stat">
+                  <div class="v-num">8<small>+国</small></div>
+                  <div class="v-lbl">覆盖市场</div>
+                </div>
+              </div>
+            </div>
+            <div class="vehicle-img-box fade-in-right">🚗</div>
+          </div>
+
+          <div class="section-subheader" style="color:var(--text-dark);margin-top:0;margin-bottom:32px;">
+            <h3 style="color:var(--text-dark);">出口目的地</h3>
+            <p style="color:var(--text-light);">覆盖一带一路沿线主要市场</p>
+          </div>
+
+          <div class="destinations-grid fade-in" id="dest-grid">
+            <!-- 动态渲染出口目的地 -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container fade-in">
+      <h2>寻找产品合作伙伴？</h2>
+      <p>我们提供从产地直采、品质把控、国际物流到清关交付的全链条服务，欢迎国内外采购商与我们建立合作关系。</p>
+      <div class="cta-btns">
+        <a href="contact.html" class="btn btn-primary">立即询盘</a>
+        <a href="global.html" class="btn btn-outline">了解物流网络</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <div class="logo-icon" style="background: var(--primary);">国合</div>
+            <div class="logo-text">
+              <span class="cn">杨凌国合跨境贸易</span>
+              <span class="en">Yangling Guohe Cross-border Trade</span>
+            </div>
+          </div>
+          <p>杨凌现代农业国际合作集团有限公司全资子公司，专注于跨境农产品进出口贸易，依托杨凌自贸片区与上合组织农业基地，连接中国与世界。</p>
+          <div class="footer-social">
+            <a href="#" title="微信">微</a>
+            <a href="#" title="微博">博</a>
+            <a href="#" title="抖音">抖</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>快速导航</h4>
+          <ul>
+            <li><a href="about.html">关于我们</a></li>
+            <li><a href="products.html">产品中心</a></li>
+            <li><a href="global.html">全球布局</a></li>
+            <li><a href="news.html">新闻中心</a></li>
+            <li><a href="contact.html">联系我们</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>核心产品</h4>
+          <ul>
+            <li><a href="products.html">猕猴桃</a></li>
+            <li><a href="products.html">阳光玫瑰葡萄</a></li>
+            <li><a href="products.html">蓝莓</a></li>
+            <li><a href="products.html">苹果</a></li>
+            <li><a href="products.html">酥梨 / 冬枣</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>联系方式</h4>
+          <ul class="footer-contact">
+            <li><span class="icon">📍</span><span>陕西省杨凌示范区·杨凌综合保税区</span></li>
+            <li><span class="icon">📧</span><span>info@ylguohe.com</span></li>
+            <li><span class="icon">📞</span><span>029-8703-9533</span></li>
+            <li><span class="icon">🕐</span><span>周一至周五 9:00 - 18:00</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2025 杨凌国合跨境贸易有限公司 版权所有</span>
+        <span><a href="#">隐私政策</a> &nbsp;|&nbsp; <a href="#">使用条款</a> &nbsp;|&nbsp; <a href="#">陕ICP备XXXXXXXX号</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="回到顶部">↑</button>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/products-page.js"></script>
+  <script src="js/i18n.js"></script>
+  <script>
+    window.PAGE_TRANSLATIONS = {
+      zh: {
+        bannerTitle: '产品中心',
+        bannerBreadcrumb: '产品中心',
+        bannerBreadcrumbHome: '首页',
+        sectionEnTitle: 'Our Products',
+        sectionTitle: '核心产品',
+        catExport: '🌿 出口农产品',
+        catImport: '🌍 进口商品',
+        catVehicle: '🚗 二手车出口',
+        vehicleEnLabel: 'USED VEHICLE EXPORT',
+        vehicleTitle: '二手车出口业务',
+        vehicleP1: '杨凌国合跨境贸易有限公司是杨凌示范区唯一具备二手车出口资质的企业。公司依托综合保税区区位优势和便利的国际物流网络，向俄罗斯、中亚五国、白俄罗斯等地出口中国品牌二手车。',
+        vehicleP2: '目前已在白俄罗斯明斯克建立4,000㎡海外展示中心，配备重型车辆装卸平台，提供全链条售后保障服务，实现从采购、检验、出口清关到海外销售的一体化服务。',
+        vStat1Num: '522',
+        vStat1Unit: '台',
+        vStat1Lbl: '累计出口台数',
+        vStat2Num: '4,000',
+        vStat2Unit: '㎡',
+        vStat2Lbl: '明斯克展示中心',
+        vStat3Num: '唯一',
+        vStat3Lbl: '杨凌示范区出口资质',
+        vStat4Num: '8',
+        vStat4Unit: '+国',
+        vStat4Lbl: '覆盖市场',
+        destSubTitle: '出口目的地',
+        destSubDesc: '覆盖一带一路沿线主要市场',
+        ctaTitle: '寻找产品合作伙伴？',
+        ctaDesc: '我们提供从产地直采、品质把控、国际物流到清关交付的全链条服务，欢迎国内外采购商与我们建立合作关系。',
+        ctaBtn1: '立即询盘',
+        ctaBtn2: '了解物流网络'
+      },
+      en: {
+        bannerTitle: 'Products',
+        bannerBreadcrumb: 'Products',
+        bannerBreadcrumbHome: 'Home',
+        sectionEnTitle: 'Our Products',
+        sectionTitle: 'Core Products',
+        catExport: '🌿 Export Products',
+        catImport: '🌍 Imported Goods',
+        catVehicle: '🚗 Used Vehicle Export',
+        vehicleEnLabel: 'USED VEHICLE EXPORT',
+        vehicleTitle: 'Used Vehicle Export Business',
+        vehicleP1: 'Yangling Guohe Cross-border Trade Co., Ltd. is the only enterprise in the Yangling Demonstration Zone with a used vehicle export qualification. Leveraging the locational advantages of the Comprehensive Bonded Zone and a convenient international logistics network, we export Chinese-brand used vehicles to Russia, the five Central Asian countries, Belarus, and other destinations.',
+        vehicleP2: 'We have established a 4,000㎡ overseas exhibition center in Minsk, Belarus, equipped with a heavy vehicle loading/unloading platform. We provide full-chain after-sales support services, covering procurement, inspection, export customs clearance, and overseas sales.',
+        vStat1Num: '522',
+        vStat1Unit: '',
+        vStat1Lbl: 'Vehicles Exported',
+        vStat2Num: '4,000',
+        vStat2Unit: '㎡',
+        vStat2Lbl: 'Minsk Exhibition Center',
+        vStat3Num: 'Sole',
+        vStat3Lbl: 'Yangling Export Qualification',
+        vStat4Num: '8',
+        vStat4Unit: '+',
+        vStat4Lbl: 'Markets Covered',
+        destSubTitle: 'Export Destinations',
+        destSubDesc: 'Covering major markets along the Belt and Road',
+        ctaTitle: 'Looking for a Product Partner?',
+        ctaDesc: 'We offer a full-chain service from origin sourcing, quality control, international logistics to customs clearance delivery. Domestic and international buyers are welcome to partner with us.',
+        ctaBtn1: 'Get a Quote',
+        ctaBtn2: 'Explore Logistics'
+      },
+      ru: {
+        bannerTitle: 'Продукция',
+        bannerBreadcrumb: 'Продукция',
+        bannerBreadcrumbHome: 'Главная',
+        sectionEnTitle: 'Our Products',
+        sectionTitle: 'Основная продукция',
+        catExport: '🌿 Экспортная сельхозпродукция',
+        catImport: '🌍 Импортные товары',
+        catVehicle: '🚗 Экспорт б/у автомобилей',
+        vehicleEnLabel: 'USED VEHICLE EXPORT',
+        vehicleTitle: 'Экспорт подержанных автомобилей',
+        vehicleP1: 'Yangling Guohe Cross-border Trade Co., Ltd. — единственное предприятие в Демонстрационной зоне Янлин, обладающее лицензией на экспорт подержанных автомобилей. Используя преимущества Комплексной бондовой зоны и развитую международную логистическую сеть, мы экспортируем подержанные автомобили китайских марок в Россию, страны Центральной Азии, Беларусь и другие направления.',
+        vehicleP2: 'В Минске (Беларусь) создан выставочный центр площадью 4 000 м² с платформой для погрузки/разгрузки тяжёлых транспортных средств. Обеспечивается полный цикл послепродажного обслуживания — от закупки и проверки до экспортного таможенного оформления и зарубежных продаж.',
+        vStat1Num: '522',
+        vStat1Unit: '',
+        vStat1Lbl: 'Экспортировано автомобилей',
+        vStat2Num: '4 000',
+        vStat2Unit: 'м²',
+        vStat2Lbl: 'Выставочный центр в Минске',
+        vStat3Num: 'Единств.',
+        vStat3Lbl: 'Лицензия на экспорт в Янлин',
+        vStat4Num: '8',
+        vStat4Unit: '+',
+        vStat4Lbl: 'Охваченных рынков',
+        destSubTitle: 'Направления экспорта',
+        destSubDesc: 'Охват ключевых рынков вдоль «Пояса и Пути»',
+        ctaTitle: 'Ищете партнёра по продукции?',
+        ctaDesc: 'Мы предлагаем полный цикл услуг: от закупки у производителя, контроля качества и международной логистики до таможенного оформления и доставки. Приглашаем к сотрудничеству закупщиков из разных стран.',
+        ctaBtn1: 'Запросить цену',
+        ctaBtn2: 'Узнать о логистике'
+      }
+    };
+
+    window.applyPageLang = function(t, lang) {
+      // Banner
+      var bannerH1 = document.querySelector('.page-banner h1');
+      if (bannerH1) bannerH1.textContent = t.bannerTitle;
+      var breadcrumb = document.querySelector('.page-banner .breadcrumb');
+      if (breadcrumb) breadcrumb.innerHTML = '<a href="index.html">' + t.bannerBreadcrumbHome + '</a> / ' + t.bannerBreadcrumb;
+
+      // Section header
+      var secHeader = document.querySelector('.products-page-section .section-header');
+      if (secHeader) {
+        var enT = secHeader.querySelector('.en-title');
+        if (enT) enT.textContent = t.sectionEnTitle;
+        var h2 = secHeader.querySelector('h2');
+        if (h2) h2.textContent = t.sectionTitle;
+      }
+
+      // Category buttons
+      var catBtns = document.querySelectorAll('.cat-btn');
+      if (catBtns[0]) catBtns[0].textContent = t.catExport;
+      if (catBtns[1]) catBtns[1].textContent = t.catImport;
+      if (catBtns[2]) catBtns[2].textContent = t.catVehicle;
+
+      // Vehicle section
+      var vEnLabel = document.querySelector('#cat-vehicle .vehicle-info > span');
+      if (vEnLabel) vEnLabel.textContent = t.vehicleEnLabel;
+      var vTitle = document.querySelector('.vehicle-info h2');
+      if (vTitle) vTitle.textContent = t.vehicleTitle;
+      var vPs = document.querySelectorAll('.vehicle-info > p');
+      if (vPs[0]) vPs[0].textContent = t.vehicleP1;
+      if (vPs[1]) vPs[1].textContent = t.vehicleP2;
+
+      // Vehicle stats
+      var vStats = document.querySelectorAll('.v-stat');
+      if (vStats[0]) {
+        vStats[0].querySelector('.v-num').innerHTML = t.vStat1Num + (t.vStat1Unit ? '<small>' + t.vStat1Unit + '</small>' : '');
+        vStats[0].querySelector('.v-lbl').textContent = t.vStat1Lbl;
+      }
+      if (vStats[1]) {
+        vStats[1].querySelector('.v-num').innerHTML = t.vStat2Num + (t.vStat2Unit ? '<small>' + t.vStat2Unit + '</small>' : '');
+        vStats[1].querySelector('.v-lbl').textContent = t.vStat2Lbl;
+      }
+      if (vStats[2]) {
+        vStats[2].querySelector('.v-num').innerHTML = t.vStat3Num;
+        vStats[2].querySelector('.v-lbl').textContent = t.vStat3Lbl;
+      }
+      if (vStats[3]) {
+        vStats[3].querySelector('.v-num').innerHTML = t.vStat4Num + (t.vStat4Unit ? '<small>' + t.vStat4Unit + '</small>' : '');
+        vStats[3].querySelector('.v-lbl').textContent = t.vStat4Lbl;
+      }
+
+      // Destinations sub-header
+      var destH3 = document.querySelector('.section-subheader h3');
+      if (destH3) destH3.textContent = t.destSubTitle;
+      var destP = document.querySelector('.section-subheader p');
+      if (destP) destP.textContent = t.destSubDesc;
+
+      // CTA
+      var ctaH2 = document.querySelector('.cta-section h2');
+      if (ctaH2) ctaH2.textContent = t.ctaTitle;
+      var ctaP = document.querySelector('.cta-section p');
+      if (ctaP) ctaP.textContent = t.ctaDesc;
+      var ctaBtns = document.querySelectorAll('.cta-btns .btn');
+      if (ctaBtns[0]) ctaBtns[0].textContent = t.ctaBtn1;
+      if (ctaBtns[1]) ctaBtns[1].textContent = t.ctaBtn2;
+    };
+  </script>
+</body>
+</html>

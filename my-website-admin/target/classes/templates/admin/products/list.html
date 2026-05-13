@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品管理 - 国合后台</title>
+    <link rel="stylesheet" th:href="@{/admin/css/admin.css}">
+</head>
+<body>
+<div th:replace="admin/fragments/sidebar :: sidebar"></div>
+<div class="main-content">
+    <div class="top-header"><div class="breadcrumb"><a href="/admin">控制台</a> / <span>产品管理</span></div></div>
+    <div class="content-area">
+        <div th:if="${message}" class="alert alert-success" th:text="${message}"></div>
+        <div class="card">
+            <div class="card-header">
+                <h3>产品列表</h3>
+                <a href="/admin/products/new" class="btn btn-primary">+ 添加产品</a>
+            </div>
+            <div class="card-body">
+                <div class="filter-tabs">
+                    <a class="filter-tab" th:classappend="${selectedCategory == null} ? 'active'" href="/admin/products">全部</a>
+                    <a th:each="cat : ${categories}" class="filter-tab"
+                       th:classappend="${selectedCategory != null and selectedCategory.toUpperCase() == cat.name()} ? 'active'"
+                       th:href="@{/admin/products(category=${cat.name()})}" th:text="${cat.label}"></a>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>排序</th><th>图标</th><th>名称</th><th>分类</th><th>产地</th><th>标签</th><th>状态</th><th>操作</th></tr></thead>
+                        <tbody>
+                        <tr th:each="p : ${products}">
+                            <td th:text="${p.sortOrder}"></td>
+                            <td th:text="${p.emoji}"></td>
+                            <td><strong th:text="${p.name}"></strong></td>
+                            <td><span class="badge badge-green" th:text="${p.category.label}"></span></td>
+                            <td class="text-truncate" th:text="${p.origin}"></td>
+                            <td class="text-truncate" th:text="${p.tags}"></td>
+                            <td><span class="badge" th:classappend="${p.active} ? 'badge-green' : 'badge-gray'" th:text="${p.active} ? '启用' : '禁用'"></span></td>
+                            <td>
+                                <div class="btn-group">
+                                    <a th:href="@{'/admin/products/' + ${p.id} + '/edit'}" class="btn btn-outline btn-sm">编辑</a>
+                                    <form th:action="@{'/admin/products/' + ${p.id} + '/delete'}" method="post" data-confirm="确认删除此产品？" style="display:inline;">
+                                        <button type="submit" class="btn btn-danger btn-sm">删除</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div th:if="${products == null or products.isEmpty()}" class="empty-state"><div class="icon">📦</div><h4>暂无产品</h4><p>点击上方按钮添加第一个产品</p></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/admin/js/admin.js}"></script>
+</body>
+</html>

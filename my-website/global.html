@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>全球布局 | 杨凌国合跨境贸易有限公司</title>
+  <meta name="description" content="杨凌国合跨境贸易全球布局：业务覆盖20+国家，中欧班列每月10列，海外仓储8000㎡，四维物流网络连接亚欧非三大洲。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ---- Global page ---- */
+    .coverage-section { background: var(--bg-cream); }
+
+    .coverage-overview {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: 64px;
+    }
+
+    .cov-card {
+      background: var(--bg-white);
+      border-radius: 14px;
+      padding: 32px 20px;
+      text-align: center;
+      border: 1px solid var(--border);
+      transition: all var(--transition);
+    }
+
+    .cov-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: var(--accent);
+    }
+
+    .cov-card .c-num {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1;
+    }
+
+    .cov-card .c-num small { font-size: 1.4rem; color: var(--accent); }
+    .cov-card .c-lbl { font-size: 0.9rem; color: var(--text-light); margin-top: 8px; }
+
+    .regions-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+
+    .region-block {
+      background: var(--bg-white);
+      border-radius: 16px;
+      padding: 32px;
+      border: 1px solid var(--border);
+    }
+
+    .region-block h3 {
+      font-size: 1.15rem;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-dark);
+    }
+
+    .region-block h3 .r-icon { font-size: 1.5rem; }
+
+    .country-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .country-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: rgba(26,94,58,0.06);
+      border: 1px solid rgba(26,94,58,0.12);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: var(--text-body);
+      transition: all var(--transition);
+    }
+
+    .country-chip:hover {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    /* ---- Logistics section ---- */
+    .logistics-section { background: var(--primary-dark); }
+
+    .logistics-section .section-header h2 { color: #fff; }
+    .logistics-section .section-header .en-title { color: rgba(255,255,255,0.5); }
+
+    .logistics-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+
+    .log-tab {
+      padding: 10px 28px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 30px;
+      background: transparent;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all var(--transition);
+      font-family: 'Noto Sans SC', sans-serif;
+    }
+
+    .log-tab.active, .log-tab:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .log-content { display: none; }
+    .log-content.active { display: grid; }
+
+    .rail-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .rail-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      padding: 32px 24px;
+      transition: all var(--transition);
+    }
+
+    .rail-card:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .rail-card .r-icon { font-size: 2.5rem; margin-bottom: 16px; }
+    .rail-card h4 { color: #fff; font-size: 1.05rem; margin-bottom: 8px; }
+    .rail-card .r-route {
+      font-size: 0.8rem;
+      color: var(--accent);
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+    .rail-card p { font-size: 0.875rem; color: rgba(255,255,255,0.6); line-height: 1.7; }
+
+    .tir-detail {
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .tir-intro { color: rgba(255,255,255,0.75); line-height: 1.9; }
+    .tir-intro h3 { color: #fff; font-size: 1.3rem; margin-bottom: 16px; }
+    .tir-intro p { margin-bottom: 12px; }
+
+    .tir-routes h4 { color: #fff; margin-bottom: 16px; }
+    .tir-route-item {
+      background: rgba(255,255,255,0.06);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: all var(--transition);
+    }
+    .tir-route-item:hover { background: rgba(255,255,255,0.1); border-color: var(--accent); }
+    .tir-route-item .route-name { color: #fff; font-size: 0.95rem; margin-bottom: 4px; }
+    .tir-route-item .route-desc { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+
+    .air-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .air-intro { color: rgba(255,255,255,0.75); }
+    .air-intro h3 { color: #fff; font-size: 1.3rem; margin-bottom: 16px; }
+    .air-intro p { line-height: 1.9; margin-bottom: 12px; }
+
+    .air-features { display: flex; flex-direction: column; gap: 12px; }
+    .air-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 10px;
+      padding: 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .air-feature .af-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .air-feature .af-text .af-title { color: #fff; font-size: 0.95rem; margin-bottom: 4px; }
+    .air-feature .af-text .af-desc { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+
+    .sea-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .sea-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      padding: 28px 20px;
+      text-align: center;
+      transition: all var(--transition);
+    }
+
+    .sea-card:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .sea-card .s-icon { font-size: 2.2rem; margin-bottom: 12px; }
+    .sea-card h4 { color: #fff; font-size: 0.95rem; margin-bottom: 8px; }
+    .sea-card p { font-size: 0.8rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+    /* ---- Warehouses ---- */
+    .warehouse-section { background: var(--bg-white); }
+
+    .wh-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .wh-card {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: all var(--transition);
+    }
+
+    .wh-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: transparent;
+    }
+
+    .wh-img {
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      position: relative;
+    }
+
+    .wh-img .wh-flag {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      font-size: 2rem;
+    }
+
+    .wh-body { padding: 28px; background: var(--bg-cream); }
+    .wh-body h3 { font-size: 1.1rem; margin-bottom: 6px; }
+    .wh-body .wh-size {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      padding: 3px 12px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      margin-bottom: 14px;
+    }
+    .wh-body p { font-size: 0.875rem; color: var(--text-body); line-height: 1.7; margin-bottom: 16px; }
+
+    .wh-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .wh-feature-tag {
+      padding: 4px 12px;
+      background: rgba(26,94,58,0.08);
+      color: var(--primary);
+      border-radius: 12px;
+      font-size: 0.75rem;
+    }
+
+    .container-box {
+      max-width: 800px;
+      margin: 64px auto 0;
+      background: var(--bg-cream);
+      border-radius: 16px;
+      padding: 40px;
+      text-align: center;
+      border: 1px solid var(--border);
+    }
+
+    .container-box .cb-icon { font-size: 3.5rem; margin-bottom: 16px; }
+    .container-box h3 { font-size: 1.3rem; margin-bottom: 12px; }
+    .container-box p { color: var(--text-body); line-height: 1.8; max-width: 600px; margin: 0 auto; }
+    .container-box .cb-num {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 3rem;
+      color: var(--primary);
+      font-weight: 700;
+      margin: 16px 0;
+    }
+
+    @media (max-width: 1024px) {
+      .coverage-overview { grid-template-columns: repeat(2, 1fr); }
+      .regions-grid { grid-template-columns: 1fr; }
+      .rail-grid { grid-template-columns: 1fr; }
+      .wh-grid { grid-template-columns: 1fr; }
+      .sea-grid { grid-template-columns: repeat(2, 1fr); }
+      .tir-detail, .air-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .coverage-overview { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .sea-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="mobile-overlay"></div>
+
+  <header class="header scrolled">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">国合</div>
+        <div class="logo-text">
+          <span class="cn">杨凌国合跨境贸易</span>
+          <span class="en">Yangling Guohe Cross-border Trade</span>
+        </div>
+      </a>
+      <div class="menu-toggle"><span></span><span></span><span></span></div>
+      <nav class="nav">
+        <a href="index.html">首页</a>
+        <a href="about.html">关于我们</a>
+        <a href="products.html">产品中心</a>
+        <a href="global.html" class="active">全球布局</a>
+        <a href="news.html">新闻中心</a>
+        <a href="contact.html">联系我们</a>
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="zh">中文</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="ru">РУ</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-banner">
+    <div>
+      <h1>全球布局</h1>
+      <div class="breadcrumb"><a href="index.html">首页</a> / 全球布局</div>
+    </div>
+  </section>
+
+  <!-- Coverage Overview -->
+  <section class="section coverage-section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div class="en-title">Global Coverage</div>
+        <h2>全球市场覆盖</h2>
+      </div>
+
+      <div class="coverage-overview">
+        <div class="cov-card fade-in" data-delay="0">
+          <div class="c-num">20<small>+</small></div>
+          <div class="c-lbl">合作国家与地区</div>
+        </div>
+        <div class="cov-card fade-in" data-delay="100">
+          <div class="c-num">10<small>列/月</small></div>
+          <div class="c-lbl">中欧班列固定车次</div>
+        </div>
+        <div class="cov-card fade-in" data-delay="200">
+          <div class="c-num">8,000<small>㎡</small></div>
+          <div class="c-lbl">海外仓储总面积</div>
+        </div>
+        <div class="cov-card fade-in" data-delay="300">
+          <div class="c-num">110<small>个</small></div>
+          <div class="c-lbl">自有40尺集装箱</div>
+        </div>
+      </div>
+
+      <div class="regions-grid">
+        <div class="region-block fade-in" data-delay="0">
+          <h3><span class="r-icon">🌏</span>中亚 · 独联体地区</h3>
+          <div class="country-list">
+            <span class="country-chip">🇷🇺 俄罗斯</span>
+            <span class="country-chip">🇰🇿 哈萨克斯坦</span>
+            <span class="country-chip">🇺🇿 乌兹别克斯坦</span>
+            <span class="country-chip">🇧🇾 白俄罗斯</span>
+            <span class="country-chip">🇦🇿 阿塞拜疆</span>
+            <span class="country-chip">🇬🇪 格鲁吉亚</span>
+            <span class="country-chip">🇹🇲 土库曼斯坦</span>
+            <span class="country-chip">🇰🇬 吉尔吉斯斯坦</span>
+          </div>
+        </div>
+
+        <div class="region-block fade-in" data-delay="150">
+          <h3><span class="r-icon">🌍</span>中东 · 西亚地区</h3>
+          <div class="country-list">
+            <span class="country-chip">🇦🇪 阿联酋（迪拜）</span>
+            <span class="country-chip">🇸🇦 沙特阿拉伯</span>
+            <span class="country-chip">🇶🇦 卡塔尔</span>
+            <span class="country-chip">🇮🇷 伊朗</span>
+            <span class="country-chip">🇵🇰 巴基斯坦</span>
+          </div>
+        </div>
+
+        <div class="region-block fade-in" data-delay="300">
+          <h3><span class="r-icon">🌏</span>东南亚地区</h3>
+          <div class="country-list">
+            <span class="country-chip">🇹🇭 泰国</span>
+            <span class="country-chip">🇻🇳 越南</span>
+            <span class="country-chip">🇲🇾 马来西亚</span>
+            <span class="country-chip">🇮🇩 印度尼西亚</span>
+          </div>
+        </div>
+
+        <div class="region-block fade-in" data-delay="450">
+          <h3><span class="r-icon">🌎</span>欧洲 · 美洲地区</h3>
+          <div class="country-list">
+            <span class="country-chip">🇨🇭 瑞士</span>
+            <span class="country-chip">🇧🇷 巴西</span>
+            <span class="country-chip">🇨🇱 智利</span>
+            <span class="country-chip">🇺🇦 乌克兰</span>
+            <span class="country-chip">🇺🇸 美国</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Logistics Network -->
+  <section class="section logistics-section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div class="en-title">Logistics Network</div>
+        <h2>四维国际物流网络</h2>
+      </div>
+
+      <div class="logistics-tabs fade-in">
+        <button class="log-tab active" data-log="rail">🚂 中欧班列</button>
+        <button class="log-tab" data-log="tir">🚛 TIR公路</button>
+        <button class="log-tab" data-log="air">✈️ 航空运输</button>
+        <button class="log-tab" data-log="sea">🚢 海运物流</button>
+      </div>
+
+      <!-- Rail -->
+      <div class="log-content active rail-grid" id="log-rail">
+        <!-- 动态渲染铁路路线 -->
+      </div>
+
+      <!-- TIR -->
+      <div class="log-content tir-detail" id="log-tir">
+        <!-- 动态渲染TIR路线 -->
+      </div>
+
+      <!-- Air -->
+      <div class="log-content air-grid" id="log-air">
+        <!-- 动态渲染航空路线 -->
+      </div>
+
+      <!-- Sea -->
+      <div class="log-content sea-grid" id="log-sea">
+        <!-- 动态渲染海运路线 -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Overseas Warehouses -->
+  <section class="section warehouse-section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div class="en-title">Overseas Warehouses</div>
+        <h2>海外仓储网络</h2>
+      </div>
+
+      <div class="wh-grid" id="wh-grid">
+        <!-- 动态渲染仓库 -->
+      </div>
+
+      <div class="container-box fade-in">
+        <div class="cb-icon">🚢</div>
+        <h3>自有集装箱资产</h3>
+        <div class="cb-num">110 <small style="font-size:1.5rem;color:var(--text-light);">个</small></div>
+        <p>公司自有110个40尺标准集装箱，覆盖铁路运输、海运、跨境公路等多种运输方式。自有集装箱资产确保旺季运力稳定，大幅降低运营成本，提升供应链响应速度。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container fade-in">
+      <h2>需要国际物流解决方案？</h2>
+      <p>我们提供中欧班列、TIR公路、航空冷链、海运多式联运一体化服务，欢迎联系我们为您定制专属物流方案。</p>
+      <div class="cta-btns">
+        <a href="contact.html" class="btn btn-primary">联系我们</a>
+        <a href="products.html" class="btn btn-outline">查看产品</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <div class="logo-icon" style="background: var(--primary);">国合</div>
+            <div class="logo-text">
+              <span class="cn">杨凌国合跨境贸易</span>
+              <span class="en">Yangling Guohe Cross-border Trade</span>
+            </div>
+          </div>
+          <p>杨凌现代农业国际合作集团有限公司全资子公司，专注于跨境农产品进出口贸易，依托杨凌自贸片区与上合组织农业基地，连接中国与世界。</p>
+          <div class="footer-social">
+            <a href="#" title="微信">微</a>
+            <a href="#" title="微博">博</a>
+            <a href="#" title="抖音">抖</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>快速导航</h4>
+          <ul>
+            <li><a href="about.html">关于我们</a></li>
+            <li><a href="products.html">产品中心</a></li>
+            <li><a href="global.html">全球布局</a></li>
+            <li><a href="news.html">新闻中心</a></li>
+            <li><a href="contact.html">联系我们</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>核心产品</h4>
+          <ul>
+            <li><a href="products.html">猕猴桃</a></li>
+            <li><a href="products.html">阳光玫瑰葡萄</a></li>
+            <li><a href="products.html">蓝莓</a></li>
+            <li><a href="products.html">苹果</a></li>
+            <li><a href="products.html">酥梨 / 冬枣</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>联系方式</h4>
+          <ul class="footer-contact">
+            <li><span class="icon">📍</span><span>陕西省杨凌示范区·杨凌综合保税区</span></li>
+            <li><span class="icon">📧</span><span>info@ylguohe.com</span></li>
+            <li><span class="icon">📞</span><span>029-8703-9533</span></li>
+            <li><span class="icon">🕐</span><span>周一至周五 9:00 - 18:00</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2025 杨凌国合跨境贸易有限公司 版权所有</span>
+        <span><a href="#">隐私政策</a> &nbsp;|&nbsp; <a href="#">使用条款</a> &nbsp;|&nbsp; <a href="#">陕ICP备XXXXXXXX号</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="回到顶部">↑</button>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/global-page.js"></script>
+  <script src="js/i18n.js"></script>
+  <script>
+    window.PAGE_TRANSLATIONS = {
+      zh: {
+        bannerTitle: '全球布局',
+        bannerBreadcrumb: '全球布局',
+        bannerBreadcrumbHome: '首页',
+        coverageEnTitle: 'Global Coverage',
+        coverageTitle: '全球市场覆盖',
+        covLbl1: '合作国家与地区',
+        covLbl2: '中欧班列固定车次',
+        covLbl3: '海外仓储总面积',
+        covLbl4: '自有40尺集装箱',
+        region1Title: '中亚 · 独联体地区',
+        region2Title: '中东 · 西亚地区',
+        region3Title: '东南亚地区',
+        region4Title: '欧洲 · 美洲地区',
+        logisticsEnTitle: 'Logistics Network',
+        logisticsTitle: '四维国际物流网络',
+        logTabRail: '🚂 中欧班列',
+        logTabTir: '🚛 TIR公路',
+        logTabAir: '✈️ 航空运输',
+        logTabSea: '🚢 海运物流',
+        whEnTitle: 'Overseas Warehouses',
+        whTitle: '海外仓储网络',
+        containerTitle: '自有集装箱资产',
+        containerNum: '110',
+        containerUnit: '个',
+        containerDesc: '公司自有110个40尺标准集装箱，覆盖铁路运输、海运、跨境公路等多种运输方式。自有集装箱资产确保旺季运力稳定，大幅降低运营成本，提升供应链响应速度。',
+        ctaTitle: '需要国际物流解决方案？',
+        ctaDesc: '我们提供中欧班列、TIR公路、航空冷链、海运多式联运一体化服务，欢迎联系我们为您定制专属物流方案。',
+        ctaBtn1: '联系我们',
+        ctaBtn2: '查看产品'
+      },
+      en: {
+        bannerTitle: 'Global Network',
+        bannerBreadcrumb: 'Global Network',
+        bannerBreadcrumbHome: 'Home',
+        coverageEnTitle: 'Global Coverage',
+        coverageTitle: 'Global Market Coverage',
+        covLbl1: 'Partner Countries & Regions',
+        covLbl2: 'China-Europe Railway Express per Month',
+        covLbl3: 'Total Overseas Warehouse Area',
+        covLbl4: '40ft Containers (Self-owned)',
+        region1Title: 'Central Asia & CIS',
+        region2Title: 'Middle East & West Asia',
+        region3Title: 'Southeast Asia',
+        region4Title: 'Europe & Americas',
+        logisticsEnTitle: 'Logistics Network',
+        logisticsTitle: 'Four-Dimensional Logistics Network',
+        logTabRail: '🚂 China-Europe Railway',
+        logTabTir: '🚛 TIR Road Transport',
+        logTabAir: '✈️ Air Freight',
+        logTabSea: '🚢 Sea Freight',
+        whEnTitle: 'Overseas Warehouses',
+        whTitle: 'Overseas Warehouse Network',
+        containerTitle: 'Self-owned Container Assets',
+        containerNum: '110',
+        containerUnit: '',
+        containerDesc: 'The company owns 110 standard 40-foot containers covering rail, sea, and cross-border road transport. Self-owned container assets ensure stable capacity during peak seasons, significantly reduce operating costs, and improve supply chain responsiveness.',
+        ctaTitle: 'Need an International Logistics Solution?',
+        ctaDesc: 'We offer integrated services including China-Europe Railway Express, TIR road transport, air cold chain, and multimodal sea freight. Contact us for a customized logistics plan.',
+        ctaBtn1: 'Contact Us',
+        ctaBtn2: 'View Products'
+      },
+      ru: {
+        bannerTitle: 'Глобальная сеть',
+        bannerBreadcrumb: 'Глобальная сеть',
+        bannerBreadcrumbHome: 'Главная',
+        coverageEnTitle: 'Global Coverage',
+        coverageTitle: 'Глобальное присутствие',
+        covLbl1: 'Стран и регионов-партнёров',
+        covLbl2: 'Рейсов Китай-Европа ж/д в месяц',
+        covLbl3: 'Площадь зарубежных складов',
+        covLbl4: 'Собственные 40-фут. контейнеры',
+        region1Title: 'Центральная Азия и СНГ',
+        region2Title: 'Ближний Восток и Западная Азия',
+        region3Title: 'Юго-Восточная Азия',
+        region4Title: 'Европа и Америка',
+        logisticsEnTitle: 'Logistics Network',
+        logisticsTitle: 'Четырёхмерная логистическая сеть',
+        logTabRail: '🚂 Ж/д Китай-Европа',
+        logTabTir: '🚛 Автоперевозки TIR',
+        logTabAir: '✈️ Авиаперевозки',
+        logTabSea: '🚢 Морские перевозки',
+        whEnTitle: 'Overseas Warehouses',
+        whTitle: 'Сеть зарубежных складов',
+        containerTitle: 'Собственный контейнерный парк',
+        containerNum: '110',
+        containerUnit: '',
+        containerDesc: 'Компания владеет 110 стандартными 40-футовыми контейнерами, используемыми для железнодорожных, морских и автомобильных перевозок. Собственный контейнерный парк обеспечивает стабильные мощности в пиковый сезон, значительно снижает операционные расходы и повышает скорость реагирования в цепочке поставок.',
+        ctaTitle: 'Нужно решение по международной логистике?',
+        ctaDesc: 'Мы предлагаем комплексные услуги: железнодорожные перевозки Китай-Европа, автоперевозки TIR, авиационные холодильные цепочки и мультимодальные морские перевозки. Свяжитесь с нами для разработки индивидуального логистического решения.',
+        ctaBtn1: 'Связаться с нами',
+        ctaBtn2: 'Смотреть продукцию'
+      }
+    };
+
+    window.applyPageLang = function(t, lang) {
+      // Banner
+      var bannerH1 = document.querySelector('.page-banner h1');
+      if (bannerH1) bannerH1.textContent = t.bannerTitle;
+      var breadcrumb = document.querySelector('.page-banner .breadcrumb');
+      if (breadcrumb) breadcrumb.innerHTML = '<a href="index.html">' + t.bannerBreadcrumbHome + '</a> / ' + t.bannerBreadcrumb;
+
+      // Coverage section header
+      var covHeader = document.querySelector('.coverage-section .section-header');
+      if (covHeader) {
+        var enT = covHeader.querySelector('.en-title');
+        if (enT) enT.textContent = t.coverageEnTitle;
+        var h2 = covHeader.querySelector('h2');
+        if (h2) h2.textContent = t.coverageTitle;
+      }
+
+      // Coverage cards labels
+      var covCards = document.querySelectorAll('.cov-card');
+      if (covCards[0]) covCards[0].querySelector('.c-lbl').textContent = t.covLbl1;
+      if (covCards[1]) covCards[1].querySelector('.c-lbl').textContent = t.covLbl2;
+      if (covCards[2]) covCards[2].querySelector('.c-lbl').textContent = t.covLbl3;
+      if (covCards[3]) covCards[3].querySelector('.c-lbl').textContent = t.covLbl4;
+
+      // Region titles
+      var regionBlocks = document.querySelectorAll('.region-block h3');
+      var regionTitles = [t.region1Title, t.region2Title, t.region3Title, t.region4Title];
+      var regionIcons = ['🌏', '🌍', '🌏', '🌎'];
+      regionBlocks.forEach(function(h3, i) {
+        if (regionTitles[i]) {
+          var icon = h3.querySelector('.r-icon');
+          var iconText = icon ? icon.textContent : regionIcons[i];
+          h3.innerHTML = '<span class="r-icon">' + iconText + '</span>' + regionTitles[i];
+        }
+      });
+
+      // Logistics section header
+      var logHeader = document.querySelector('.logistics-section .section-header');
+      if (logHeader) {
+        var enT = logHeader.querySelector('.en-title');
+        if (enT) enT.textContent = t.logisticsEnTitle;
+        var h2 = logHeader.querySelector('h2');
+        if (h2) h2.textContent = t.logisticsTitle;
+      }
+
+      // Logistics tabs
+      var logTabs = document.querySelectorAll('.log-tab');
+      if (logTabs[0]) logTabs[0].textContent = t.logTabRail;
+      if (logTabs[1]) logTabs[1].textContent = t.logTabTir;
+      if (logTabs[2]) logTabs[2].textContent = t.logTabAir;
+      if (logTabs[3]) logTabs[3].textContent = t.logTabSea;
+
+      // Warehouse section header
+      var whHeader = document.querySelector('.warehouse-section .section-header');
+      if (whHeader) {
+        var enT = whHeader.querySelector('.en-title');
+        if (enT) enT.textContent = t.whEnTitle;
+        var h2 = whHeader.querySelector('h2');
+        if (h2) h2.textContent = t.whTitle;
+      }
+
+      // Container box
+      var cBox = document.querySelector('.container-box');
+      if (cBox) {
+        var h3 = cBox.querySelector('h3');
+        if (h3) h3.textContent = t.containerTitle;
+        var cbNum = cBox.querySelector('.cb-num');
+        if (cbNum) cbNum.innerHTML = t.containerNum + (t.containerUnit ? ' <small style="font-size:1.5rem;color:var(--text-light);">' + t.containerUnit + '</small>' : '');
+        var p = cBox.querySelector('p');
+        if (p) p.textContent = t.containerDesc;
+      }
+
+      // CTA
+      var ctaH2 = document.querySelector('.cta-section h2');
+      if (ctaH2) ctaH2.textContent = t.ctaTitle;
+      var ctaP = document.querySelector('.cta-section p');
+      if (ctaP) ctaP.textContent = t.ctaDesc;
+      var ctaBtns = document.querySelectorAll('.cta-btns .btn');
+      if (ctaBtns[0]) ctaBtns[0].textContent = t.ctaBtn1;
+      if (ctaBtns[1]) ctaBtns[1].textContent = t.ctaBtn2;
+    };
+  </script>
+</body>
+</html>

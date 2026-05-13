@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>物流路线 - 国合后台</title><link rel="stylesheet" th:href="@{/admin/css/admin.css}"></head>
+<body>
+<div th:replace="admin/fragments/sidebar :: sidebar"></div>
+<div class="main-content">
+    <div class="top-header"><div class="breadcrumb"><a href="/admin">控制台</a> / <span>物流路线</span></div></div>
+    <div class="content-area">
+        <div th:if="${message}" class="alert alert-success" th:text="${message}"></div>
+        <div class="card">
+            <div class="card-header"><h3>物流路线管理</h3><a href="/admin/global/routes/new" class="btn btn-primary">+ 添加路线</a></div>
+            <div class="card-body">
+                <div class="filter-tabs">
+                    <a class="filter-tab" th:classappend="${selectedType == null} ? 'active'" href="/admin/global/routes">全部</a>
+                    <a th:each="t : ${types}" class="filter-tab" th:classappend="${selectedType != null and selectedType.toUpperCase() == t.name()} ? 'active'"
+                       th:href="@{/admin/global/routes(type=${t.name()})}" th:text="${t.label}"></a>
+                </div>
+                <div class="table-wrapper"><table>
+                    <thead><tr><th>排序</th><th>图标</th><th>类型</th><th>名称</th><th>城市</th><th>频次</th><th>时效</th><th>操作</th></tr></thead>
+                    <tbody><tr th:each="r : ${routes}">
+                        <td th:text="${r.sortOrder}"></td><td th:text="${r.icon}"></td>
+                        <td><span class="badge badge-blue" th:text="${r.type.label}"></span></td>
+                        <td><strong th:text="${r.name}"></strong></td><td th:text="${r.cities}"></td>
+                        <td th:text="${r.frequency}"></td><td th:text="${r.transitTime}"></td>
+                        <td><div class="btn-group"><a th:href="@{'/admin/global/routes/' + ${r.id} + '/edit'}" class="btn btn-outline btn-sm">编辑</a>
+                            <form th:action="@{'/admin/global/routes/' + ${r.id} + '/delete'}" method="post" data-confirm="确认删除？" style="display:inline;"><button type="submit" class="btn btn-danger btn-sm">删除</button></form></div></td>
+                    </tr></tbody>
+                </table></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/admin/js/admin.js}"></script>
+</body></html>

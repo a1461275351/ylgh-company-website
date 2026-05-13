@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编辑新闻 - 国合后台</title>
+    <link rel="stylesheet" th:href="@{/admin/css/admin.css}">
+</head>
+<body>
+<div th:replace="admin/fragments/sidebar :: sidebar"></div>
+<div class="main-content">
+    <div class="top-header"><div class="breadcrumb"><a href="/admin">控制台</a> / <a href="/admin/news">新闻管理</a> / <span th:text="${article.id != null} ? '编辑新闻' : '发布新闻'"></span></div></div>
+    <div class="content-area">
+        <div class="card">
+            <div class="card-header"><h3 th:text="${article.id != null} ? '编辑新闻' : '发布新闻'"></h3></div>
+            <div class="card-body">
+                <form th:action="@{/admin/news/save}" method="post" th:object="${article}">
+                    <input type="hidden" th:field="*{id}">
+                    <div class="form-group">
+                        <label>标题 *</label>
+                        <input type="text" class="form-control" th:field="*{title}" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>分类 *</label>
+                            <select class="form-control" th:field="*{category}" required>
+                                <option value="">请选择</option>
+                                <option th:each="cat : ${categories}" th:value="${cat}" th:text="${cat.label}"></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>日期</label>
+                            <input type="text" class="form-control" th:field="*{date}" placeholder="如：2025.02">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Emoji 图标</label>
+                            <input type="text" class="form-control" th:field="*{emoji}" placeholder="如：🥝">
+                        </div>
+                        <div class="form-group">
+                            <label>图片路径</label>
+                            <input type="text" class="form-control" th:field="*{image}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>摘要</label>
+                        <textarea class="form-control" th:field="*{excerpt}" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>正文内容</label>
+                        <textarea class="form-control" th:field="*{content}" rows="8"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input type="checkbox" th:field="*{featured}" id="featured">
+                            <label for="featured">置顶文章</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input type="checkbox" th:field="*{active}" id="active">
+                            <label for="active">启用状态</label>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">保存新闻</button>
+                        <a href="/admin/news" class="btn btn-outline">取消</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/admin/js/admin.js}"></script>
+</body>
+</html>

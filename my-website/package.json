@@ -1,0 +1,13 @@
+{
+  "name": "my-website",
+  "version": "1.0.0",
+  "description": "杨凌国合跨境贸易有限公司 - 前端项目",
+  "private": true,
+  "scripts": {
+    "dev": "node server.js"
+  },
+  "devDependencies": {
+    "express": "^4.21.0",
+    "http-proxy-middleware": "^3.0.0"
+  }
+}

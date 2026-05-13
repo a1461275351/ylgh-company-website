@@ -1,0 +1,28 @@
+server:
+
+  port: 8081
+  servlet:
+    encoding:
+      charset: UTF-8
+      force: true
+
+spring:
+  profiles:
+    active: dev
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  thymeleaf:
+    cache: false
+    encoding: UTF-8
+
+app:
+  upload:
+    dir: ./uploads
+  cors:
+    allowed-origins:
+#      - http://47.109.192.2:8080
+      - http://47.109.192.2:8080    # 前端地址
+      - http://47.109.192.2          # nginx 80端口
+      - http://localhost:8080         # 本地开发

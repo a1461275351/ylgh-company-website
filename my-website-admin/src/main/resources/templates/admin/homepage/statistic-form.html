@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>编辑统计 - 国合后台</title><link rel="stylesheet" th:href="@{/admin/css/admin.css}"></head>
+<body>
+<div th:replace="admin/fragments/sidebar :: sidebar"></div>
+<div class="main-content">
+    <div class="top-header"><div class="breadcrumb"><a href="/admin">控制台</a> / <a href="/admin/homepage/statistics">数据统计</a> / <span>编辑</span></div></div>
+    <div class="content-area">
+        <div class="card"><div class="card-header"><h3 th:text="${statistic.id != null} ? '编辑统计' : '添加统计'"></h3></div>
+            <div class="card-body">
+                <form th:action="@{/admin/homepage/statistics/save}" method="post" th:object="${statistic}">
+                    <input type="hidden" th:field="*{id}">
+                    <div class="form-group"><label>标签 *</label><input type="text" class="form-control" th:field="*{label}" required placeholder="如：2025年进出口贸易额"></div>
+                    <div class="form-row">
+                        <div class="form-group"><label>数值 *</label><input type="text" class="form-control" th:field="*{value}" required placeholder="如：5.79"></div>
+                        <div class="form-group"><label>单位</label><input type="text" class="form-control" th:field="*{unit}" placeholder="如：亿"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group"><label>图标</label><input type="text" class="form-control" th:field="*{icon}" placeholder="如：💰"></div>
+                        <div class="form-group"><label>分区</label><input type="text" class="form-control" th:field="*{section}" placeholder="numbers 或 growth"></div>
+                    </div>
+                    <div class="form-group"><label>排序</label><input type="number" class="form-control" th:field="*{sortOrder}" value="0"></div>
+                    <div class="form-actions"><button type="submit" class="btn btn-primary">保存</button><a href="/admin/homepage/statistics" class="btn btn-outline">取消</a></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/admin/js/admin.js}"></script>
+</body></html>

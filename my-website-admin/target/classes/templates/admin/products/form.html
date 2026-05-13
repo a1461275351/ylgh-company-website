@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编辑产品 - 国合后台</title>
+    <link rel="stylesheet" th:href="@{/admin/css/admin.css}">
+</head>
+<body>
+<div th:replace="admin/fragments/sidebar :: sidebar"></div>
+<div class="main-content">
+    <div class="top-header"><div class="breadcrumb"><a href="/admin">控制台</a> / <a href="/admin/products">产品管理</a> / <span th:text="${product.id != null} ? '编辑产品' : '添加产品'"></span></div></div>
+    <div class="content-area">
+        <div class="card">
+            <div class="card-header"><h3 th:text="${product.id != null} ? '编辑产品' : '添加产品'"></h3></div>
+            <div class="card-body">
+                <form th:action="@{/admin/products/save}" method="post" th:object="${product}">
+                    <input type="hidden" th:field="*{id}">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>产品名称 *</label>
+                            <input type="text" class="form-control" th:field="*{name}" required>
+                        </div>
+                        <div class="form-group">
+                            <label>分类 *</label>
+                            <select class="form-control" th:field="*{category}" required>
+                                <option value="">请选择</option>
+                                <option th:each="cat : ${categories}" th:value="${cat}" th:text="${cat.label}"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>产地</label>
+                            <input type="text" class="form-control" th:field="*{origin}" placeholder="如：陕西眉县 · 周至">
+                        </div>
+                        <div class="form-group">
+                            <label>Emoji 图标</label>
+                            <input type="text" class="form-control" th:field="*{emoji}" placeholder="如：🥝">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>产品描述</label>
+                        <textarea class="form-control" th:field="*{description}" rows="4"></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>标签（逗号分隔）</label>
+                            <input type="text" class="form-control" th:field="*{tags}" placeholder="如：翠香,徐香,红阳">
+                        </div>
+                        <div class="form-group">
+                            <label>徽章</label>
+                            <input type="text" class="form-control" th:field="*{badge}" placeholder="如：核心出口">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>排序（数字越小越靠前）</label>
+                            <input type="number" class="form-control" th:field="*{sortOrder}" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label>图片路径</label>
+                            <input type="text" class="form-control" th:field="*{image}" placeholder="上传后自动填入">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input type="checkbox" th:field="*{active}" id="active">
+                            <label for="active">启用状态</label>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">保存产品</button>
+                        <a href="/admin/products" class="btn btn-outline">取消</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/admin/js/admin.js}"></script>
+</body>
+</html>
