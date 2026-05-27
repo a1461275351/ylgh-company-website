@@ -297,6 +297,63 @@ select.form-control { appearance: auto; }
     margin-top: 20px;
 }
 
+.image-upload-field {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.image-upload-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.btn-file input {
+    display: none;
+}
+
+.upload-status {
+    min-height: 18px;
+    font-size: 13px;
+    color: var(--text-light);
+}
+
+.upload-status.is-success {
+    color: var(--success);
+}
+
+.upload-status.is-error {
+    color: var(--danger);
+}
+
+.upload-status.is-loading {
+    color: var(--info);
+}
+
+.image-upload-preview {
+    display: none;
+    width: 100%;
+    max-width: 320px;
+    padding: 8px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: #fafafa;
+}
+
+.image-upload-preview.has-image {
+    display: block;
+}
+
+.image-upload-preview img {
+    display: block;
+    width: 100%;
+    max-height: 180px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
 /* ========== Badges ========== */
 .badge {
     display: inline-block;

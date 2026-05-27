@@ -13,7 +13,51 @@ function fixEmoji(s) {
   return s;
 }
 
+function resolveImageUrl(url) {
+  if (!url) return '';
+  if (/^(https?:)?\/\//i.test(url) || /^data:/i.test(url)) return url;
+  if (url.charAt(0) !== '/') return url;
+
+  if (url.indexOf('/uploads/') === 0 &&
+      location.hostname === 'localhost' &&
+      location.port === '8080') {
+    return 'http://localhost:8081' + url;
+  }
+
+  return url;
+}
+
+function escapeAttr(value) {
+  return String(value || '')
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+function renderNewsMedia(item) {
+  if (item && item.image) {
+    return '<img class="news-card-image" src="' + escapeAttr(resolveImageUrl(item.image)) + '" alt="' + escapeAttr(item.title || 'news image') + '" loading="lazy">';
+  }
+
+  return '<span class="news-card-emoji">' + (item && item.emoji ? item.emoji : '馃摪') + '</span>';
+}
+
+function initNewsImageFallback() {
+  var grid = document.getElementById('news-grid');
+  if (!grid) return;
+  grid.addEventListener('error', function(e) {
+    var image = e.target;
+    if (!image || !image.classList || !image.classList.contains('news-card-image')) return;
+    var fallback = document.createElement('span');
+    fallback.className = 'news-card-emoji';
+    fallback.textContent = '馃摪';
+    image.replaceWith(fallback);
+  }, true);
+}
+
 (async function loadHomepageData() {
+  initNewsImageFallback();
   await Promise.all([
     loadBanners(),
     loadStatistics(),
@@ -112,6 +156,21 @@ async function loadProducts() {
   }
 }
 
+function renderHomepageNewsImages(items) {
+  var cards = document.querySelectorAll('#news-grid .news-card');
+  items.forEach(function(item, index) {
+    if (!item || !item.image || !cards[index]) return;
+
+    var media = cards[index].querySelector('.card-img');
+    if (!media) return;
+
+    var dateBadge = media.querySelector('.date-badge');
+    media.textContent = '';
+    media.insertAdjacentHTML('afterbegin', renderNewsMedia(item));
+    if (dateBadge) media.appendChild(dateBadge);
+  });
+}
+
 async function loadLatestNews() {
   const data = await api.get('/api/news/latest');
   if (!data || data.length === 0) return;
@@ -129,6 +188,7 @@ async function loadLatestNews() {
       </div>
     </a>
   `).join('');
+  renderHomepageNewsImages(data);
 }
 
 // ===== Antigravity 失重动画 =====
