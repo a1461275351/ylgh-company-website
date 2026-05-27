@@ -39,7 +39,18 @@
                         </div>
                         <div class="form-group">
                             <label>图片路径</label>
-                            <input type="text" class="form-control" th:field="*{image}">
+                            <div class="image-upload-field">
+                                <input type="text" class="form-control js-image-path" th:field="*{image}" placeholder="上传后自动填入，也可粘贴图片地址">
+                                <div class="image-upload-actions">
+                                    <label class="btn btn-outline btn-file">
+                                        选择图片
+                                        <input type="file" class="js-image-upload-input" accept="image/*" data-target="#image">
+                                    </label>
+                                    <button type="button" class="btn btn-outline js-clear-image" data-target="#image">清空</button>
+                                </div>
+                                <div class="upload-status js-upload-status" aria-live="polite"></div>
+                                <div class="image-upload-preview js-image-preview"></div>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
